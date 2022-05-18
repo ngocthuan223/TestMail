@@ -1,0 +1,73 @@
+
+<form [formGroup]="form">
+    <table *ngIf="!selectedPdf && !reviewPdf">
+        <tr>
+            <td>
+                <input formControlName="id" />
+            </td>
+            <td>
+                <input formControlName="template_name" />
+            </td>
+            <td>
+                <input formControlName="lang_key" />
+            </td>
+            <td>
+                <button (click)="createPDF(); $event.stopPropagation()"
+                    style="background-color: green;">Create</button>
+            </td>
+        </tr>
+
+        <tr *ngFor="let pdf of pdfs">
+            <td>
+                {{pdf.id}}
+            </td>
+            <td>
+                {{pdf.template_name}}
+            </td>
+            <td>
+                <button mat-icon-button [matMenuTriggerFor]="menu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="selectPdf(pdf);"
+                        >Edit</button>
+                    <button mat-menu-item (click)="reviewPdfPopup(pdf);"
+                        >View</button>
+                    <!-- <button mat-menu-item (click)="copyToWhiteRs(mail);"
+                        >Copy to white rs</button> -->
+                    <button mat-menu-item (click)="copyToDemo(pdf);"
+                        >Copy to demo</button>
+                </mat-menu>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<div class="edit" *ngIf="selectedPdf">
+    <input [(ngModel)]="selectedPdf.id" disabled />
+    <input [(ngModel)]="selectedPdf.template_name" />
+    <input [(ngModel)]="selectedPdf.lang_key" />
+    <textarea *ngIf="templateNl" [(ngModel)]="selectedPdf.template_nl" rows="44"></textarea>
+    <textarea *ngIf="templateEn" [(ngModel)]="selectedPdf.template_en" rows="44"></textarea>
+    <div>
+        <button (click)="save()" style="background-color: green;">Save</button>
+        <button (click)="cancel()" style="margin-left: 2rem;">cancel</button>
+        <button (click)="review()" style="margin-left: 2rem;">Review</button>
+
+        <input type="checkbox" [(ngModel)]="templateNl" />
+        <label>template nl</label>
+        
+        <input type="checkbox" [(ngModel)]="templateEn" />
+        <label>template en</label>
+       
+    </div>
+</div>
+
+<div class="review" *ngIf="reviewPdf">
+    <iframe [srcdoc]="htmlPdfData" frameborder="0"></iframe>
+    <!-- <table>
+        <tr>
+            <td [innerHTML]="htmlPdfData"></td>
+        </tr>
+    </table> -->
+</div>

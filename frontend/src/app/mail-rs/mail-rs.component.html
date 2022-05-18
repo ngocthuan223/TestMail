@@ -1,0 +1,109 @@
+<div class="mail_rs_header">
+    <input [(ngModel)]="resellerId" placeholder="Reseller id"/>
+    <input class="mail_name" [(ngModel)]="mailName" placeholder="Mail name"/>
+    <button (click)="loadEmailBy();"
+    style="background-color: green;">Load</button>
+</div>
+<form [formGroup]="form">
+    <table *ngIf="!selectedMail && !reviewMail">
+        <tr>
+            <td>
+                <input formControlName="id" />
+            </td>
+            <td>
+                <input formControlName="mail_name" />
+            </td>
+            <td>
+                <input formControlName="lang_key" />
+            </td>
+            <td>
+                <input formControlName="subject" />
+            </td>
+            <td>
+                <input formControlName="subject_nl" />
+            </td>
+            <td>
+                <input formControlName="reseller_id" />
+            </td>
+            <td>
+                <button (click)="createEmail(); $event.stopPropagation()"
+                    style="background-color: green;">Create</button>
+            </td>
+        </tr>
+
+        <tr *ngFor="let mail of mails">
+            <td>
+                {{mail.id}}
+            </td>
+            <td>
+                {{mail.mail_name}}
+            </td>
+            <td>
+                {{mail.lang_key}}
+            </td>
+            <td>
+                {{mail.subject}}
+            </td>
+            <td>
+                {{mail.subject_nl}}
+            </td>
+            <td>
+                {{mail.reseller_id}}
+            </td>
+            <td class="td-buttons">
+                <button mat-icon-button [matMenuTriggerFor]="menu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="selectMail(mail)"
+                        >Edit</button>
+                    <button mat-menu-item (click)="reviewMailPopup(mail)"
+                        >View</button>
+                    <button mat-menu-item (click)="copyToDemo(mail)"
+                        >Copy to demo</button>
+                    <button mat-menu-item (click)="deleteEmail(mail)"
+                        >Delete</button>
+                </mat-menu>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<div class="edit" *ngIf="selectedMail">
+    <input [(ngModel)]="selectedMail.id" disabled />
+    <input [(ngModel)]="selectedMail.mail_name" />
+    <input [(ngModel)]="selectedMail.lang_key" />
+    <input [(ngModel)]="selectedMail.subject" />
+    <input [(ngModel)]="selectedMail.subject_nl" />
+    <textarea *ngIf="templateNl" [(ngModel)]="selectedMail.mail_template_nl" rows="35"></textarea>
+    <textarea *ngIf="templateEn" [(ngModel)]="selectedMail.mail_template_en" rows="35"></textarea>
+    <textarea *ngIf="footerNL" [(ngModel)]="selectedMail.footer_nl" rows="35"></textarea>
+    <textarea *ngIf="footerEN" [(ngModel)]="selectedMail.footer_en" rows="35"></textarea>
+    <div>
+        <button (click)="save()" style="background-color: green;">Save</button>
+        <button (click)="cancel()" style="margin-left: 2rem;">cancel</button>
+        <button (click)="review()" style="margin-left: 2rem;">Review</button>
+        <button (click)="sendMail()" style="margin-left: 2rem;">Send mail test</button>
+        <input type="text" [(ngModel)]="emailTo" />
+        <input class="checkbox" type="checkbox" [(ngModel)]="footerNL" />
+        <label>footer nl</label>
+
+        <input class="checkbox" type="checkbox" [(ngModel)]="footerEN" />
+        <label>footer en</label>
+
+        <input type="checkbox" [(ngModel)]="templateNl" />
+        <label>template nl</label>
+        
+        <input type="checkbox" [(ngModel)]="templateEn" />
+        <label>template en</label>
+       
+    </div>
+</div>
+
+<div class="review" *ngIf="reviewMail">
+    <table>
+        <tr>
+            <td [innerHTML]="htmlData"></td>
+        </tr>
+    </table>
+</div>

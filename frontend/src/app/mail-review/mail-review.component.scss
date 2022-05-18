@@ -1,0 +1,29 @@
+tr {
+    height: 38px;
+    &:hover {
+        background-color: beige;
+        cursor: pointer;
+    }
+    td {
+        padding: 0px 8px;
+    }
+}
+
+.edit {
+    display: flex;
+    flex-direction: column;
+    input, textarea {
+        margin-bottom: 1rem;
+    }
+}
+
+.review {
+    width: 600px;
+}
+
+.checkbox {
+    margin-left: 2rem;
+}
+::ng-deep .mat-dialog-content {
+    max-height: 90vh;
+}

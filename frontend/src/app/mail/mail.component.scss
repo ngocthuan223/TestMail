@@ -1,0 +1,36 @@
+tr {
+    height: 38px;
+    &:hover {
+        background-color: beige;
+        cursor: pointer;
+    }
+    td {
+        padding: 0px 8px;
+        input {
+            width: 100%;
+        }
+    }
+}
+
+.edit {
+    display: flex;
+    flex-direction: column;
+    input, textarea {
+        margin-bottom: 1rem;
+    }
+}
+
+.review {
+    width: 600px;
+}
+
+.checkbox {
+    margin-left: 2rem;
+}
+.td-buttons {
+    white-space: nowrap;
+    button {
+        margin-right: 1rem;
+        height: 100%;
+    }
+}

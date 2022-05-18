@@ -1,0 +1,33 @@
+tr {
+    height: 38px;
+    &:hover {
+        background-color: beige;
+        cursor: pointer;
+    }
+    td {
+        padding: 0px 8px;
+        input {
+            width: 100%;
+        }
+    }
+}
+
+.edit {
+    display: flex;
+    flex-direction: column;
+    input, textarea {
+        margin-bottom: 1rem;
+    }
+}
+
+.review {
+    width: 800px;
+    iframe {
+        width: 100%;
+        height: 800px;
+    }
+}
+
+.checkbox {
+    margin-left: 2rem;
+}
