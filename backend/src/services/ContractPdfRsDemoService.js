@@ -5,26 +5,33 @@ const createOrUpdate = async (pdf) => {
         const pdfEdit = await contract_pdf_template_rs.findOne(
             {where: {
                 template_name: pdf?.template_name,
-                reseller_id: pdf?.reseller_id
             }, raw: true});
+        if(pdfEdit) {
+            delete pdf.reseller_id;
+            delete pdf.id;
+            contract_pdf_template_rs.update(
+                pdf,
+                {
+                    where: {
+                        template_name: pdf?.template_name
+                    }
+                }).then(async (result) => {
+                    return resolve(result);
+                }, (e) => {
+                    console.log(e);
+                    reject({ error: "Internal Error" });
+                });
+        } else {
             contract_pdf_template_rs.create(
-                pdfEdit ?
-                    {...pdf, id: pdfEdit.id} :
-                    {...pdf, id: undefined},
-            {
-                updateOnDuplicate: [
-                    'template_name',
-                    'lang_key',
-                    'template_en',
-                    'template_nl',
-                ]
-            }).then(async (result) => {
+                {...pdf, id: undefined}
+            ).then(async (result) => {
                 return resolve(result);
             }, (e) => {
                 console.log(e);
                 reject({ error: "Internal Error" });
             });
-        });
+        }
+    });
 } 
 module.exports = {
     createOrUpdate

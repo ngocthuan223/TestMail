@@ -1,13 +1,12 @@
+const { MailRsDemoSevice } = require('./MailRsDemoSevice');
 const { mail_template_rs } = require('../entities/models_stagging/index');
-const CommonService = require('./CommonService');
-const MailDemoSevice = require('./MailDemoSevice');
 
 const copyToDemo = async (mail_name, reseller_id) => {
     const mail = await mail_template_rs.findOne({where: {mail_name, reseller_id}, raw: true});
     if(!mail) {
         throw "Mail not found";
     }
-    const result = await MailDemoSevice.createOrUpdate(mail);
+    const result = await MailRsDemoSevice.createOrUpdate(mail);
     return result;
 }
 
@@ -45,7 +44,20 @@ const createOrUpdate = async (mail) => {
     });
 }
 
+const copyToOtherResellers = async (mail_name, reseller_id) => {
+    const mail = await mail_template_rs.findOne({where: {mail_name, reseller_id}, raw: true});
+    if(!mail) {
+        throw Error('Not Found');
+    }
+    delete mail.reseller_id;
+    delete mail.id;
+    const result = await mail_template_rs.update(mail, { where: { mail_name: mail.mail_name } });
+    return result;
+}
+
+
 module.exports = {
     copyToDemo,
-    createOrUpdate
+    createOrUpdate,
+    copyToOtherResellers
 };

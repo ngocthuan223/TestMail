@@ -1,0 +1,110 @@
+<table class="table mb-0 table-custom table-fixed-v [fixed_delivery_elk_visible]">
+    <thead class="[fixed_delivery_thead_elk_visible]">
+        <th class="pl-2">KIKKER ENERGIE [is_green_energy] STROOM</th>
+        <th class="pl-2 text-center"></th>
+        <th class="pl-2 text-right"></th>
+        <th class="pl-2 text-right"><span class="float-left">TARIEF</th>
+        <th class="pl-2 text-right">BEDRAG</th>
+    </thead>
+    <thead class="[fixed_delivery_thead_elk_visible]">
+        <th class="pl-2 text-nowrap">KIKKER EXCHANGE MAAND<span class="[multil_elk_ean_number_visible]">EAN
+                [multil_elk_ean_number]</span> | [fixed_delivery_btw]% VAT</th>
+        <th class="pl-2 text-center"><span class="float-left">PERIODE</th>
+        <th class="pl-2 text-right"><span class="float-left">AANTAL</span><span class="d-inline-block pr-3">x</span>
+        </th>
+        <th class="pl-2 text-right"><span class="float-left">EXCL. BTW</span><span class="d-inline-block pr-1">=</span>
+        </th>
+        <th class="pl-2 text-right">EXCL. BTW</th>
+    </thead>
+    <tbody>
+        <tr class="[fixed_delivery_dal_visible]">
+            <td class="pl-2">
+                Verbruik stroom (daltarief)
+            </td>
+            <td class="pl-2">[fixed_delivery_dal_start_date] t/m [fixed_delivery_dal_end_date]</td>
+            <td class="pl-2">[fixed_delivery_dal_usage] kWh</td>
+            <td class="pl-2"> € [fixed_delivery_dal_tariff]</td>
+            <td class="pl-2 text-right">€ [fixed_delivery_dal_amount]</td>
+        </tr>
+        <tr class="[fixed_delivery_normal_visible]">
+            <td class="pl-2">
+                Verbruik stroom (normaaltarief)
+            </td>
+            <td class="pl-2">[fixed_delivery_normal_start_date] t/m [fixed_delivery_normal_end_date]</td>
+            <td class="pl-2">[fixed_delivery_normal_usage] kWh</td>
+            <td class="pl-2"> € [fixed_delivery_normal_tariff]</td>
+            <td class="pl-2 text-right">€ [fixed_delivery_normal_amount]</td>
+        </tr>
+        <tr class="[fixed_delivery_return_visible]">
+            <td class="pl-2">
+                Teruglevering
+            </td>
+            <td class="pl-2">[fixed_delivery_return_start_date] t/m [fixed_delivery_return_end_date]</td>
+            <td class="pl-2">[fixed_delivery_return_usage] kWh</td>
+            <td class="pl-2">- € [fixed_delivery_return_tariff]</td>
+            <td class="pl-2 text-right">- € [fixed_delivery_return_amount]</td>
+        </tr>
+        <tr class="[fixed_delivery_elk_item_visible]">
+            <td class="pl-2">
+                Vaste leveringskosten voor stroom
+            </td>
+            <td class="pl-2">[fixed_delivery_elk_start_date] t/m [fixed_delivery_elk_end_date]</td>
+            <td class="pl-2">[fixed_delivery_elk_usage] dagen</td>
+            <td class="pl-2">€ [fixed_delivery_elk_tariff]</td>
+            <td class="pl-2 text-right">€ [fixed_delivery_elk_amount]</td>
+        </tr>
+        <tr class="background-none [fixed_delivery_elk_total_visible]">
+            <td class="pl-2"></td>
+            <td class="pl-2"></td>
+            <td class="pl-2"></td>
+            <td class="pl-2"></td>
+            <td class="pl-2 font-weight-bold text-right">€ [fixed_delivery_elk_total]</td>
+        </tr>
+    </tbody>
+</table>
+<table class="table mb-0 table-custom table-fixed-v [fixed_delivery_gas_visible]">
+    <thead class="[fixed_delivery_thead_gas_visible]">
+        <th class="pl-2">KIKKER ENERGIE GAS</th>
+        <th class="pl-2 text-center"></th>
+        <th class="pl-2 text-right"></th>
+        <th class="pl-2 text-right">TARIEF</th>
+        <th class="pl-2 text-right">BEDRAG</th>
+    </thead>
+    <thead class="[fixed_delivery_thead_gas_visible]">
+        <th class="pl-2 text-nowrap">KIKKER EXCHANGE MAAND <span class="[multil_gas_ean_number_visible]">EAN
+                [multil_elk_ean_number]</span> | [fixed_delivery_btw]% VAT</th>
+        <th class="pl-2 text-center"><span class="float-left">PERIODE</th>
+        <th class="pl-2 text-right"><span class="float-left">AANTAL</span><span class="d-inline-block pr-3">x</span>
+        </th>
+        <th class="pl-2 text-right"><span class="float-left">EXCL. BTW</span><span class="d-inline-block pr-1">=</span>
+        </th>
+        <th class="pl-2 text-right">EXCL. BTW</th>
+    </thead>
+    <tbody>
+        <tr class="[fixed_delivery_gas_normal_visible]">
+            <td class="pl-2">
+                Gaslevering incl. regiotoeslag
+            </td>
+            <td class="pl-2">[fixed_delivery_normal_gas_start_date] t/m [fixed_delivery_normal_gas_end_date]</td>
+            <td class="pl-2">[fixed_delivery_gas_usage] m<sup>3</sup></td>
+            <td class="pl-2">€ [fixed_delivery_gas_tariff]</td>
+            <td class="pl-2 text-right">€ [fixed_delivery_gas_amount]</td>
+        </tr>
+        <tr class="[fixed_delivery_gas_item_visible]">
+            <td class="pl-2">
+                Vaste leveringskosten voor gas
+            </td>
+            <td class="pl-2">[fixed_delivery_gas_start_date] t/m [fixed_delivery_gas_end_date]</td>
+            <td class="pl-2">[fixed_delivery_cost_gas_usage] dagen</td>
+            <td class="pl-2">€ [fixed_delivery_cost_gas_tariff]</td>
+            <td class="pl-2 text-right">€ [fixed_delivery_cost_gas_amount]</td>
+        </tr>
+        <tr class="background-none [fixed_delivery_gas_total_visible]">
+            <td class="pl-2"></td>
+            <td class="pl-2"></td>
+            <td class="pl-2"></td>
+            <td class="pl-2"></td>
+            <td class="pl-2 font-weight-bold text-right">€ [fixed_delivery_gas_total]</td>
+        </tr>
+    </tbody>
+</table>

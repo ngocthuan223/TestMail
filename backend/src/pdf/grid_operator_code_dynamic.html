@@ -1,0 +1,59 @@
+<table class="table table-custom mb-0" cellspacing="0" cellpadding="0">
+    <thead>
+        <th class="pl-2">
+                NETBEHEERKOSTEN VOOR [product_type]
+                <span class="[multil_ean_number_visible]"><br>EAN[multil_ean_number]</span>
+                <br>
+                <span>([start_date] / [end_date]) | [vat]% BTW</span>
+        </th>
+        <th class="pl-2 text-right" style="vertical-align: bottom;">
+            <br>
+            <span class="float-left">AANTAL</span><span class="d-inline-block pr-4">x</span>
+        </th>
+        <th class="pl-2 text-right" style="vertical-align: bottom;">
+            <span class="float-left">TARIEF</span>
+            <br>
+            <span class="float-left">EXCL. BTW</span><span class="d-inline-block pr-4">=</span>
+        </th>
+        <th class="pl-2 text-right" style="vertical-align: bottom;">
+            BEDRAG
+            <br>
+            EXCL. BTW
+        </th>
+    </thead>
+    <tbody>
+        [grid_operator_item]
+        <tr class="[grid_operator_item_total_visible] tr-total-vat">
+            <td colspan="4">
+                <div class="text-right" style="margin-right: -4px;">
+                    <div class="text-nowrap" >
+                        Subtotaal
+                        <span class="d-inline-block" style="width: 140px;">
+                            [sub_total]
+                        </span>
+                    </div>
+
+                    <div class="text-tax-color text-nowrap [hide_vat_1]" >
+                        btw [btw_1]% over [net_month_1]
+                        <span class="d-inline-block" style="width: 140px;">
+                            [btw_amount_1]
+                        </span>
+                    </div>
+                    <div class="text-tax-color text-nowrap [hide_vat_2]" >
+                        btw [btw_2]% over [net_month_2]
+                        <span class="d-inline-block" style="width: 140px;">
+                            [btw_amount_2]
+                        </span>
+                    </div>
+               
+                    <div class="d-inline-block border-top-bold-td text-nowrap font-weight-bold">
+                        Totaalbedrag voor overheidsheffingen op [product_type]
+                        <span class="d-inline-block" style="width: 140px;">
+                            [grid_operator_total]
+                        </span>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

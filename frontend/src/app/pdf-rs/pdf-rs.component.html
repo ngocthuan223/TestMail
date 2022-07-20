@@ -1,8 +1,6 @@
 <div class="mail_rs_header">
-    <input [(ngModel)]="resellerId" placeholder="Reseller id"/>
-    <input class="mail_name" [(ngModel)]="pdfName" placeholder="Mail name"/>
-    <button (click)="loadPdfBy();"
-    style="background-color: green;">Load</button>
+    <input [(ngModel)]="resellerId" placeholder="Reseller id" (keyup)="keyupLoad($event)"/>
+    <input class="mail_name" [(ngModel)]="pdfName" placeholder="Mail name"  (keyup)="keyupLoad($event)" style="width: 400px"/>
 </div>
 <form [formGroup]="form">
     <table *ngIf="!selectedPdf && !reviewPdf">
@@ -14,7 +12,7 @@
                 <input formControlName="template_name" />
             </td>
             <td>
-                <input formControlName="lang_key" />
+                <input formControlName="reseller_id" />
             </td>
             <td>
                 <button (click)="createPDF(); $event.stopPropagation()"
@@ -30,6 +28,9 @@
                 {{pdf.template_name}}
             </td>
             <td>
+                {{pdf.reseller_id}}
+            </td>
+            <td>
                 <button mat-icon-button [matMenuTriggerFor]="menu">
                     <mat-icon>more_vert</mat-icon>
                 </button>
@@ -38,10 +39,11 @@
                         >Edit</button>
                     <button mat-menu-item (click)="reviewPdfPopup(pdf);"
                         >View</button>
-                    <!-- <button mat-menu-item (click)="copyToWhiteRs(mail);"
-                        >Copy to white rs</button> -->
+                    <button mat-menu-item (click)="copyToOtherReserller(pdf);"
+                        >Copy to other reseller</button>
                     <button mat-menu-item (click)="copyToDemo(pdf);"
                         >Copy to demo</button>
+                        
                 </mat-menu>
             </td>
         </tr>

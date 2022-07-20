@@ -1,0 +1,84 @@
+<table class="table table-custom mb-0 table_fixed_delivery [table_type_v]">
+    <thead class="[fixed_delivery_item_header_visible]">
+        <th class="pl-2 th-elk text-nowrap">
+            KIKKER ENERGIE [is_green_energy] [product_type] [contract_duration]
+            <span class="[multil_ean_number_visible]"><br>EAN [multil_ean_number]</span>
+            <br>
+            ([start_date] / [end_date]) | [fixed_delivery_btw]% BTW
+        </th>
+        <th class="pl-2 text-right"  style="vertical-align: bottom;">
+            <br>
+            <span class="float-left">AANTAL</span><span class="d-inline-block pr-4">x</span>
+        </th>
+        <th class="pl-2 text-right"  style="vertical-align: bottom;">
+            <span class="float-left">TARIEF</span>
+            <br>
+            <span class="float-left">EXCL. BTW</span><span class="d-inline-block pr-4">=</span>
+        </th>
+        <th class="pl-2 text-right"  style="vertical-align: bottom;">BEDRAG
+            <br>
+            EXCL. BTW
+        </th>
+    </thead>
+    
+    <thead class="[fixed_delivery_item_header_visible_v]">
+        <th class="pl-2 text-nowrap">
+            KIKKER ENERGIE [is_green_energy] [product_type]
+            <br>
+            [contract_duration]
+            <br>
+            <span class="[multil_ean_number_visible]">EAN [multil_ean_number]</span> |[fixed_delivery_btw]% BTW
+        </th>
+        <th class="pl-2 text-center"  style="vertical-align: bottom;">
+            PERIODE
+        </th>
+        <th class="pl-2 text-right"  style="vertical-align: bottom;">
+            <span class="float-left">AANTAL</span><span class="d-inline-block pr-3">x</span>
+        </th>
+        <th class="pl-2 text-right"  style="vertical-align: bottom;">
+            <span class="float-left">TARIEF</span>
+            <br>
+            <span class="float-left">EXCL. BTW</span><span class="d-inline-block pr-1">=</span>
+        </th>
+        <th class="pl-2 text-right"  style="vertical-align: bottom;">BEDRAG
+            <br>
+            EXCL. BTW
+        </th>
+    </thead>
+    <tbody>
+        [fixed_delivery_item]
+        <tr class="[fixed_delivery_item_total_visible] tr-total-vat">
+            <td colspan="5">
+                <div class="text-right" style="margin-right: -4px;">
+                    <div class="text-nowrap">
+                        Subtotaal
+                        <span class="d-inline-block" style="width: 140px;">
+                            [delivery_sub_total]
+                        </span>
+                    </div>
+
+                    <div class="text-tax-color text-nowrap [hide_delivery_vat_1]">
+                        btw [delivery_btw_1]% over [delivery_net_month_1]
+                        <span class="d-inline-block" style="width: 140px;">
+                            [delivery_btw_amount_1]
+                        </span>
+
+                    </div>
+                    <div class="text-tax-color text-nowrap [hide_delivery_vat_2]">
+                        btw [delivery_btw_2]% over [delivery_net_month_2]
+                        <span class="d-inline-block" style="width: 140px;">
+                            [delivery_btw_amount_2]
+                        </span>
+
+                    </div>
+                    <div class="d-inline-block border-top-bold-td text-nowrap font-weight-bold">
+                        Totaalbedrag voor leveringskosten voor [product_type]
+                        <span class="d-inline-block" style="width: 140px;">
+                            [fixed_delivery_total]
+                        </span>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

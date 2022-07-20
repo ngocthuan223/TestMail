@@ -31,4 +31,16 @@ export class MailRsService {
   deleteMail(mail: MailRsTemplate) {
     return this.http.delete(this.baseUrl + '/delete/' + mail.id);
   }
+
+  getById(id: number) {
+    return this.http.get(this.baseUrl + `/${id}`);
+  }
+
+  copyToDemo(mail: MailRsTemplate) {
+    return this.http.post(this.baseUrl + `/copy-to-demo`, {mail_name: mail.mail_name, reseller_id: mail.reseller_id});
+  }
+
+  copyToOtherReseller(mail: MailRsTemplate) {
+    return this.http.post(this.baseUrl + `/copy-to-other-reseller`, {mail_name: mail.mail_name, reseller_id: mail.reseller_id});
+  }
 }

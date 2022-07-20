@@ -4,4 +4,6 @@ module.exports = {
     ContractPdfDemoService: require('./ContractPdfDemoService'),
     MailService: require('./MailService'),
     MailDemoSevice: require('./MailDemoSevice'),
+    MailRsService: require('./MailRsService'),
+    MailRsDemoSevice: require('./MailRsDemoSevice'),
 };

@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+    body {
+        background-color: #ffff;
+        font-family: DIN;
+        font-size: 26px;
+    }
+
+    .text-bold {
+        font-weight: bold;
+    }
+
+    .text-small {
+        font-size: 13px !important;
+    }
+
+    .text-normal {
+        font-size: 16px !important;
+    }
+
+    .table-header {
+        margin-bottom: 0px !important;
+        border-bottom: 2px solid black !important;
+    }
+
+    .table-striped-even tbody tr:nth-of-type(even) {
+        background-color: rgba(0, 0, 0, .05);
+    }
+
+    .bolder-top {
+        border-top: 2px solid black !important;
+    }
+
+    .bolder-top-light {
+        border-top: 1px solid black !important;
+    }
+
+    .logo {
+        font-size: 20px !important;
+    }
+
+    .logo-image .wrap-logo img {
+        max-height: 100%;
+        border-radius: 0;
+        object-fit: cover;
+        border: none;
+        background: #fff;
+        max-width: 100%;
+    }
+
+    .wrap-logo {
+        height: 3.2cm;
+        border-radius: 0;
+        border: none;
+        background: #fff;
+        max-width: 50%;
+    }
+
+    .logo-image p {
+        font-size: 35px;
+        margin: 0;
+        line-height: 82px;
+        width: 0.99in;
+        height: 0.86in;
+        text-align: center;
+        background-color: rgb(0, 146, 153);
+        color: #fff;
+        margin-right: auto;
+    }
+
+    .name-reseller {
+        position: relative;
+        padding-left: 15px;
+        display: inline-block;
+        display: none;
+    }
+
+    .name-reseller p {
+        margin: 0;
+    }
+
+    .name-reseller p:first-child {
+        font-weight: bold;
+        font-size: 32px !important;
+        color: #000;
+        padding-top: 8px;
+        line-height: 42px;
+    }
+
+    .name-reseller p:last-child {
+        font-size: 26px !important;
+        color: #3AA3AA;
+        line-height: 42px;
+        padding-bottom: 8px
+    }
+
+    .name-reseller:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        height: 100%;
+        width: 2px;
+        background: #BFBFBF;
+        top: 0;
+    }
+
+    #first .container,
+    .second .container,
+    #third .container {
+        position: relative;
+        max-width: 100% !important;
+    }
+
+    #first .container {
+        height: 35.2cm;
+    }
+
+    .second .container {
+        height: 35.2cm;
+    }
+
+    #third .container {
+        height: 34cm;
+    }
+
+    #first .container .row.footer,
+    .second .container .row.footer,
+    #third .container .row.footer {
+        position: absolute;
+        width: 100%;
+        bottom: 1px;
+    }
+
+    .pdl-pdr-0 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    table th {
+        font-weight: 400;
+    }
+
+    .table td,
+    .table th {
+        padding: 0.3rem;
+        border-top: none;
+    }
+
+    .table-custom th {
+        font-size: 12px;
+        position: relative;
+    }
+
+    .green-tr {
+        background: #24441F;
+        color: #fff;
+    }
+
+    .report {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        background: #24441F;
+        color: #fff;
+        padding: 12px;
+        font-size: 11px;
+        bottom: -20px;
+        margin-bottom: 0;
+    }
+
+    .table-grey tr {
+        background-color: rgba(0, 0, 0, .05);
+    }
+
+    .text-logo {
+        color: #24441F;
+        font-size: 40px;
+        font-weight: 900;
+        position: relative;
+        line-height: 100%;
+        font-family: "Montserrat";
+    }
+
+    .text-logo img {
+        height: auto;
+        max-height: 75px;
+        border-radius: 0;
+        object-fit: contain;
+        border: none;
+        background: #fff;
+        width: auto;
+        max-width: 100%;
+    }
+
+    .text-logo span {
+        font-weight: 500;
+        position: absolute;
+        bottom: -8px;
+        left: 85px;
+        line-height: 100%;
+    }
+
+    .table thead th {
+        border-top: 0;
+        position: relative;
+    }
+
+    .fix-table thead th:last-child {
+        min-width: 250px;
+    }
+
+    /* .table td {
+    color: #212529;
+    border-top: 0;
+    min-width: 381px;
+} */
+    .green-tr td {
+        color: #fff;
+    }
+
+    .table thead th {
+        border-bottom: none;
+    }
+
+    .table thead th:first-child,
+    .table tbody tr td:first-child {
+        /* color: #6d6d6d; */
+        min-width: 300px;
+        max-width: 300px;
+        width: 300px;
+    }
+
+    .text-black td {
+        color: #000;
+    }
+
+    /* .total-tr div:first-child {
+        width: 482px;
+    }
+.total-tr div:not(:first-child) {
+    width: calc(50% - 241px);
+    padding-left: 8px;
+    font-weight: bold;
+    display: inline-block;
+} */
+    .total-tr {
+        padding-left: 12.12cm;
+    }
+
+    .total-tr div {
+        font-weight: bold;
+    }
+
+    .total-tr div:first-child {
+        width: 4.18cm;
+    }
+
+    .total-tr div:last-child {
+        width: 3.44cm;
+    }
+
+    .second .table-6-col tr td:first-child {
+        width: 250px;
+    }
+
+    .tr-total {
+        background: #fff !important;
+        border-top: 1px solid #000;
+    }
+
+    .tr-sustainable-tax2 td {
+        padding-bottom: 30px;
+    }
+
+    .table-13 .cut-text {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        max-width: 120px;
+        display: inline-block;
+    }
+
+    .table-4 .cut-text {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        max-width: 50px;
+        display: inline-block;
+    }
+
+    .list-aan {
+        padding-left: 17px;
+    }
+
+    .list-aan li {
+        list-style-type: square;
+        padding-left: 10px;
+    }
+
+    .title-description {
+        font-size: 18px;
+    }
+
+    .content-contract>p {
+        display: flex;
+        width: 100%;
+        text-align: left;
+    }
+
+    .content-contract>p span:last-child {
+        /* float: right; */
+        width: calc(100% - 160px);
+        min-width: calc(100% - 160px);
+        max-width: calc(100% - 160px);
+        text-align: left;
+        display: inline-block;
+    }
+
+    .content-contract>p span:first-child {
+        min-width: 160px;
+        max-width: 160px;
+        width: 160px;
+        display: inline-block;
+    }
+
+    .link-elk {
+        color: #212529;
+        text-decoration: underline
+    }
+
+    .link-elk:hover {
+        color: #212529;
+    }
+
+    a {
+        text-decoration: underline;
+    }
+
+    .space-span {
+        padding-top: 50px;
+    }
+
+    .space-span>p>span:first-child {
+        min-width: 150px;
+    }
+
+    .table td:not(:first-child) {
+        border-left: none;
+    }
+
+    .table tr:nth-last-of-type(3) td {
+        border-top: none;
+        border-left: none;
+    }
+
+    .table tr:last-child td {
+        border-top: 0;
+    }
+
+    .table tr {
+        background-color: #f1f7fa;
+        border-top: 2px solid #fff;
+    }
+
+    .table tr:last-child {
+        border: none;
+        background-color: transparent;
+    }
+
+    .table-custom tbody tr:last-child {
+        background-color: #f1f7fa;
+        border-top: 2px solid #fff;
+    }
+
+
+    .table-custom tbody tr.background-none {
+        background-color: transparent;
+    }
+
+    .table tr:last-child td:nth-last-of-type(1),
+    .table tr:last-child td:nth-last-of-type(2) {
+        border-top: none;
+        border-left: none;
+    }
+
+    .table td {
+        line-height: 32px;
+    }
+
+    .icon-image {
+        width: 12px;
+        margin-right: 3px;
+    }
+
+    .text-image {
+        color: #99a7ce;
+        font-size: 14px;
+    }
+
+    .sub-total>span,
+    .btw-total>span {
+        display: inline-block;
+        width: 140px;
+    }
+
+    .btw-total>span.w-200 {
+        width: 200px;
+    }
+
+    .btw-total>span.nowrap {
+        white-space: nowrap;
+        position: absolute;
+        left: 0;
+        text-align: left;
+    }
+
+    .elk-gas-total>span {
+        display: inline-block;
+        position: relative;
+    }
+
+    .elk-gas-total>span:last-child::after {
+        content: "";
+        width: 100%;
+        background: #000;
+        top: -10px;
+        height: 2px;
+        position: absolute;
+        left: 0;
+    }
+
+    .row.header {
+        padding-bottom: 50px;
+    }
+
+    .table th {
+        color: #99a7ce;
+    }
+
+    .list-ean-item {
+        min-width: 410px;
+        max-width: 410px;
+    }
+
+    .space-top-gas {
+        border-top: 30px solid #fff !important;
+    }
+
+    .vertical-align-top {
+        vertical-align: top;
+    }
+
+    .footer .text-logo img {
+        max-height: 60px;
+    }
+
+    p.d-none,
+    div.d-none {
+        display: none !important;
+    }
+
+    .custom-table .table thead th:first-child,
+    .custom-table .table tbody tr td:first-child {
+        /* color: #6d6d6d; */
+        min-width: 400px;
+        max-width: 400px;
+        width: 400px;
+    }
+
+    .table_tax .table thead th:nth-child(2),
+    .table_tax .table tbody tr td:nth-child(2) {
+        /* color: #6d6d6d; */
+        min-width: 110px;
+        max-width: 110px;
+        width: 110px;
+    }
+
+    .table_tax .table thead th:nth-child(3),
+    .table_tax .table tbody tr td:nth-child(3) {
+        /* color: #6d6d6d; */
+        min-width: 130px;
+        max-width: 130px;
+        width: 130px;
+    }
+
+    .table_grid_operator .table thead th:nth-child(2),
+    .table_grid_operator .table tbody tr td:nth-child(2) {
+        /* color: #6d6d6d; */
+        min-width: 135px;
+        max-width: 135px;
+        width: 135px;
+    }
+
+    .table_grid_operator .table thead th:nth-child(3),
+    .table_grid_operator .table tbody tr td:nth-child(3) {
+        /* color: #6d6d6d; */
+        min-width: 155px;
+        max-width: 155px;
+        width: 155px;
+    }
+
+    .table_fixed_delivery .table tbody tr td:nth-child(1),
+    .table_fixed_delivery .table thead th:nth-child(1) {
+        /* color: #6d6d6d; */
+        min-width: 200px;
+        max-width: 200px;
+        width: 200px;
+    }
+
+    /* 
+.table_fixed_delivery .table thead th.th-elk {
+    padding-right: 65px;
+}
+
+.table_fixed_delivery .table thead th.th-gas {
+    padding-right: 110px;
+} */
+
+    /* .table_fixed_delivery .table thead th:nth-child(2),
+.table_fixed_delivery .table tbody tr td:nth-child(2) {
+    min-width: 220px;
+    max-width: 220px;
+    width: 220px;
+} */
+
+    .table_fixed_delivery .table thead th:nth-last-child(3),
+    .table_fixed_delivery .table tbody tr td:nth-last-child(3) {
+        /* color: #6d6d6d; */
+        min-width: 90px;
+        max-width: 90px;
+        width: 90px;
+    }
+
+    .table_fixed_delivery .table thead th:nth-last-child(2),
+    .table_fixed_delivery .table tbody tr td:nth-last-child(2) {
+        /* color: #6d6d6d; */
+        min-width: 110px;
+        max-width: 110px;
+        width: 110px;
+    }
+
+    .table_fixed_delivery .table thead th:last-child,
+    .table_fixed_delivery .table tbody tr td:last-child {
+        /* color: #6d6d6d; */
+        min-width: 90px;
+        max-width: 90px;
+        width: 90px;
+    }
+
+    .table-fixed thead th:first-child,
+    .table-fixed tbody tr td:first-child {
+        /* color: #6d6d6d; */
+        min-width: 480px;
+        max-width: 480px;
+        width: 480px;
+    }
+
+    .table-first thead th:first-child,
+    .table-first tbody tr td:first-child {
+        /* color: #6d6d6d; */
+        min-width: 550px;
+        max-width: 550px;
+        width: 550px;
+    }
+
+
+    .table-fixed-v thead th,
+    .table-fixed-v tbody tr td {
+        /* color: #6d6d6d; */
+        min-width: 110px;
+    }
+
+    .table-fixed-v thead th:last-child,
+    .table-fixed-v tbody tr td:last-child {
+        /* color: #6d6d6d; */
+        min-width: 50px;
+    }
+
+    .table_fixed_delivery .table-fixed-v thead th:nth-child(1),
+    .table_fixed_delivery .table-fixed-v tbody tr td:nth-child(1),
+    .table-usage thead th:nth-child(1),
+    .table-usage tbody tr td:nth-child(1) {
+        /* color: #6d6d6d; */
+        min-width: 250px;
+        max-width: 250px;
+        width: 250px;
+    }
+
+    .table_fixed_delivery .table-fixed-v thead th:nth-child(1) {
+        padding-right: 55px;
+    }
+
+    .table-fixed-v thead th:nth-child(2),
+    .table-fixed-v tbody tr td:nth-child(2) {
+        min-width: 180px;
+    }
+
+    .table tr td {
+        text-align: left;
+    }
+
+    .content p {
+        text-align: justify;
+    }
+
+    .ean-code>span:first-child {
+        min-width: 100px;
+    }
+
+    .monthly-amount-block>div {
+        padding: 20px 15px;
+    }
+
+    .monthly-amount-block>div:last-child {
+        color: #fff;
+    }
+    .d-none {
+        display: none !important;
+    }
+    .text-capitalize {
+        text-transform: capitalize;
+    }
+    .header-table tr td {
+        vertical-align: top;
+    }
+    .text-nowrap {
+        white-space: nowrap;
+    }
+</style>
+
+<body>
+    <div class="container text-normal mp-3">
+        <table style="width: 100%;" class="header-table">
+            <tbody>
+                <tr style="width: 100%;">
+                    <td style="width: 60%;">
+                        <div style="display: inline-block;vertical-align: top;width: 100%;text-align: left;"
+                            class="logo-image">
+                            <div class="wrap-logo">
+                                <img src="[reseller_logo]">
+                            </div>
+                        </div>
+                    </td>
+                    <td style="float: right;">
+                        <table>
+                            <tr>
+                                <td class="text-right d-inline-block pr-3" style="min-width: 150px;">Klantnummer:</td>
+                                <td>[client_number]</td>
+                            </tr>
+                            <tr>
+                                <td class="text-right d-inline-block pr-3" style="min-width: 150px;">Contractnummer:
+                                </td>
+                                <td>[contract_number]</td>
+                            </tr>
+                            <tr>
+                                <td class="text-right d-inline-block pr-3" style="min-width: 150px;">Factuurnummer:</td>
+                                <td>[invoice_number]</td>
+                            </tr>
+
+                            <tr class="[company_name_visible]">
+                                <td class="text-right d-inline-block pr-3" style="min-width: 150px;">Bedrijfsnaam:</td>
+                                <td style="min-width: 150px; max-width: 300px; width: [company_name_width]px;">
+                                    [company_name]</td>
+                            </tr>
+                            <tr>
+                                <td class="text-right d-inline-block pr-3" style="min-width: 150px;">Leveringsadres:
+                                </td>
+                                 <td class="min-width: 150px; max-width: 300px; width: [company_name_width]px;">
+                                    [delivery_address_street] [delivery_address_houseNr]<span class="text-nowrap"> [delivery_address_zipcode] <span class="text-capitalize"> [delivery_address_city]</span>
+                                    </span>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="height: 30px;"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

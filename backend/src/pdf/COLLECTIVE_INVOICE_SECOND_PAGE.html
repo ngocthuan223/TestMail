@@ -1,0 +1,67 @@
+<div class="page second">
+    <div class="container text-normal">
+        <div class="row header mt-2 pt-2 mr-0 ml-0">
+            <div style="width: 60%;">
+                <div style="display: inline-block;vertical-align: top;width: 100%;text-align: left;" class="logo-image">
+                    <div class="wrap-logo">
+                        <img src="[reseller_logo]">
+                    </div>
+                </div>
+            </div>
+            <div style="width: 40%;" class="mr-0 ml-0">
+                <p class="space-span" style="padding-top: 0">
+                    <span class="d-inline-block text-right pr-3">Klantnummer:</span> [client_number]<br>
+                    <span class="d-inline-block text-right pr-3">Verzamelfactuur:</span> [invoice_number]<br>
+                    <span class="d-inline-block text-right pr-3">Factuurdatum:</span> [created_date]<br>
+                    <span class="d-inline-block text-right pr-3">Vervaldatum:</span> [expiration_date]<br>
+                    <span class="d-inline-block text-right pr-3">Reseller:</span> [reseller_name]<br>
+                </p>
+            </div>
+        </div>
+        <div class="content">
+
+            [item_contract]
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mt-2 text-right sub-total">
+                        <span class="w-200 nowrap">Subtotaal</span>
+                        <span class="font-weight-bold">€ [sub_total]</span>
+                    </div>
+                    <div class="mt-2 pt-1 text-right btw-total [sum_total_none]">
+                        <span class="w-200 nowrap">Totaalbedrag excl. btw</span>
+                        <span>€ [total_amount]</span>
+                    </div>
+                    <div class="mt-2 pt-1 text-right btw-total [sum_total_none] [hide_vat_1]">
+                        <span class="w-200 nowrap"> btw [btw_1]% over € [net_month_1]</span>
+                        <span>€ [btw_amount_1]</span>
+                    </div>
+                    <div class="mt-2 pt-1 text-right btw-total [sum_total_none] [hide_vat_2]">
+                        <span class="w-200 nowrap"> btw [btw_2]% over € [net_month_2]</span>
+                        <span>€ [btw_amount_2]</span>
+                    </div>
+                    <div class="mt-2 pt-4 text-right font-weight-bold elk-gas-total btw-total [sum_total_none]">
+                        <span class="w-200 nowrap">Totaalbedrag</span>
+                        <span class="float-right">€ [sum_total]</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row footer my-4 ml-0 mr-0 text-small">
+            <div style="width: 25%;" class="text-left pr-3">
+                <div class="text-logo">
+                    <img src="[reseller_logo]">
+                </div>
+            </div>
+
+            <div class="row mx-0 pr-3" style="width: 35%; align-items: center;">
+                <div class="text-left" style="width: 35px;"><br> KvK b</div>
+                <div class="text-left" style="width: calc(100% - 35px);"><br>[footer_kvk]</div>
+            </div>
+            <div class="row mx-0 pr-3" style="width: 35%;">
+                <div class="text-left" style="width: 35px;"><br>BTW</div>
+                <div class="text-left" style="width: calc(100% - 35px);"><br>[footer_btw]</div>
+            </div>
+        </div>
+    </div>
+</div>

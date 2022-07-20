@@ -6,6 +6,33 @@ const { sendMail } = require('../ultils/SendMail');
 
 router.get('/', async (req, res) => {
     await mail_template.findAll({
+        attributes: [
+            'id',
+            'mail_name',
+            'lang_key',
+            'subject',
+            'subject_nl'
+        ],
+        order: [
+            ['id', 'DESC'],
+        ],
+    }).then((result) => {
+        res.status(200).json(result);
+    }, (error) => {
+        console.log(error)
+        res.status(500).json({
+            message: "Get error",
+            error: error
+        })
+    });
+});
+
+router.get('/:id', async (req, res) => {
+    const id = req.params.id;
+    await mail_template.findOne({
+        where: {
+            id
+        },
         order: [
             ['id', 'DESC'],
         ],
@@ -85,6 +112,18 @@ router.delete('/delete/:id', async (req, res) => {
     try {
         const id = req.params.id
         const result = await mail_template.destroy({ where: { id } });
+        return res.status(200).json(result);
+    } catch (error) {
+        console.log(error)
+        res.sendStatus(500);
+
+    }
+});
+
+router.post('/restore-from-demo', async (req, res) => {
+    try {
+        const mail_name = req.fields.mail_name
+        const result = await MailService.restoreFromDemo(mail_name);
         return res.status(200).json(result);
     } catch (error) {
         console.log(error)

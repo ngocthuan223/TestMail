@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Billing | Kikker</title>
+  <meta charset="utf-8">
+  <link rel="icon" href="asset/kikker-icon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://storage.googleapis.com/kikkerprodbucket/static-files/pdf-css/site.css">
+</head>
+
+<style>
+    /* Font css */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800,900&display=swap');
+body {
+    background-color: #ffff;
+    font-family: DIN;
+    font-size: 26px;
+}
+.text-bold{
+    font-weight: bold;
+}
+.text-small {
+    font-size: 13px !important;
+}
+.text-normal {
+    font-size: 16px !important;
+}
+.table-header{
+    margin-bottom: 0px !important;
+    border-bottom: 2px solid black !important; 
+}
+.table-striped-even tbody tr:nth-of-type(even){
+    background-color: rgba(0,0,0,.05);
+}
+.bolder-top {
+    border-top: 2px solid black !important; 
+}
+
+.bolder-top-light {
+    border-top: 1px solid black !important; 
+}
+.logo {
+    font-size: 20px !important;
+}
+
+.logo-image .wrap-logo img {
+    max-height: 100%;
+    border-radius: 0;
+    object-fit: cover;
+    border: none;
+    background: #fff;
+    max-width: 100%;
+}
+
+.wrap-logo {
+    height: 30mm;
+    border-radius: 0;
+    border: none;
+    background: #fff;
+    max-width: 50%;
+}
+
+.logo-image p {
+    font-size: 35px;
+    margin: 0;
+    line-height: 82px;
+    width: 0.99in;
+    height: 0.86in;
+    text-align: center;
+    background-color: rgb(0, 146, 153);
+    color: #fff;
+    margin-right: auto;
+}
+
+.name-reseller {
+	position: relative;
+	padding-left: 15px;
+    display: inline-block;
+    display: none;
+}
+
+.name-reseller p {
+	margin: 0;
+}
+
+.name-reseller p:first-child {
+	font-weight: bold;
+    font-size: 32px !important;
+    color: #000;
+    padding-top: 8px;
+    line-height: 42px;
+}
+
+.name-reseller p:last-child {
+	font-size: 26px !important;
+    color: #3AA3AA;
+    line-height: 42px;
+    padding-bottom: 8px
+}
+
+.name-reseller:before {
+	content: '';
+	position: absolute;
+	left: 0;
+	height: 100%;
+	width: 2px;
+	background: #BFBFBF;
+	top: 0;
+}
+.page .container,
+#first .container,
+.second .container,
+#third .container {
+    position: relative;
+    max-width: 100% !important;
+}
+
+#first .container {
+    height: 35.2cm;
+}
+
+.second .container{
+    height: 35.2cm;
+}
+
+#third .container {
+    height: 34cm;
+}
+
+#first .container .row.footer,
+.second .container .row.footer,
+#third .container .row.footer {
+    position: absolute;
+    width: 100%;
+    bottom: 1px;
+}
+
+.pdl-pdr-0 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+table th {
+    font-weight: 400;
+}
+
+.table td, .table th {
+    padding: 0.3rem;
+}
+.green-tr {
+    background: #24441F;
+    color: #fff;
+}
+.report {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    background: #24441F;
+    color: #fff;
+    padding: 12px;
+    font-size: 11px;
+    bottom: -20px;
+    margin-bottom: 0;
+}
+.table-grey tr {
+    background-color: rgba(0,0,0,.05);
+}
+.text-logo {
+    color: #24441F;
+    font-size: 40px;
+    font-weight: 900;
+    position: relative;
+    line-height: 100%;
+    font-family: 'Montserrat';
+}
+
+.text-logo img {
+    height: auto;
+    max-height: 75px;
+    border-radius: 0;
+    object-fit: contain;
+    border: none;
+    background: #fff;
+    width: auto;
+    max-width: 100%;
+}
+
+.text-logo span {
+    font-weight: 500;
+    position: absolute;
+    bottom: -8px;
+    left: 85px;
+    line-height: 100%;
+}
+.table thead th {
+    border-top: 0;
+}
+.fix-table thead th:last-child {
+    min-width: 250px;
+}
+.table td {
+    color: #212529;
+    border-top: 0;
+    min-width: 381px;
+}
+.green-tr td {
+    color: #fff;
+}
+.table thead th {
+    border-bottom: 1px solid #000;
+}
+.table thead th:first-child {
+    /* color: #6d6d6d; */
+    min-width: 250px;
+}
+.text-black td {
+    color: #000;
+}
+    /* .total-tr div:first-child {
+        width: 482px;
+    }
+.total-tr div:not(:first-child) {
+    width: calc(50% - 241px);
+    padding-left: 8px;
+    font-weight: bold;
+    display: inline-block;
+} */
+.total-tr {
+    padding-left: 12.12cm;
+}
+
+.total-tr div {
+    font-weight: bold;
+}
+.total-tr div:first-child {
+    width: 4.18cm;
+}
+
+.total-tr div:last-child {
+    width: 3.44cm;
+}
+
+.second .table-6-col tr td:first-child {
+    width: 250px;
+}
+
+.tr-total {
+    background: #fff !important;
+    border-top: 1px solid #000;
+}
+
+.tr-sustainable-tax2 td {
+    padding-bottom: 30px;
+}
+
+.table-13 .cut-text {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 120px;
+    display: inline-block;
+}
+
+.table-4 .cut-text {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 50px;
+    display: inline-block;
+}
+.list-aan {
+    padding-left: 17px;
+}
+
+.list-aan li {
+    list-style-type: square;
+    padding-left: 10px;
+}
+.title-description {
+    font-size: 18px;
+}
+.content-contract > p {
+    display: flex;
+    width: 100%;
+    text-align: left;
+}
+.content-contract > p span:last-child {
+    /* float: right; */
+    width: calc(100% - 160px);
+    min-width: calc(100% - 160px);
+    max-width: calc(100% - 160px);
+    text-align: left;
+    display: inline-block;
+}
+
+.content-contract > p span:first-child {
+    min-width: 160px;
+    max-width: 160px;
+    width: 160px;
+    display: inline-block;
+}
+.link-elk {
+    color: #212529;
+    text-decoration: underline
+}
+.link-elk:hover {
+    color: #212529;
+}
+a {
+    text-decoration: underline;
+}
+
+.background-pdf .page > .container {
+    background-image: url('data:image/png;base64,[background_pdf]');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.background-pdf .header,
+.background-pdf .footer {
+    opacity: 0;
+}
+
+.background-pdf .page .content {
+    padding-top: 60px;
+}
+
+
+.list-icon .item-icon {
+    background: #f5f7fa;
+    border-radius: 7px;
+}
+
+.list-icon .item-icon .subtitle {
+    color: #99a7ce;
+    font-size: 12px;
+}
+
+.list-icon .icon {
+    height: 52.87px;
+}
+
+.group-list .title-group {
+    color: #99a7ce;
+    font-size: 12px;
+    font-weight: 500;
+    /* letter-spacing: .5px; */
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.group-list .list-caculation {
+    padding: 0;
+}
+
+.group-list .list-caculation li {
+    list-style-type: none;
+    font-size: 14px;
+    background: #f9fbfd;
+    border-bottom: 1px solid #fff;
+}
+
+.group-list .list-caculation li:last-child {
+    display: block;
+    background: none;
+    border: none;
+}
+
+.group-list .list-caculation .center-text-color {
+    color: #99a7ce;
+}
+
+.group-list .list-caculation .left-text-color {
+    display: inline-block;
+    width: 55%;
+}
+
+.group-list .list-caculation .sub-list {
+    width: 44.7%;
+    display: inline-block;
+}
+
+.group-list .list-caculation .sub-list span:first-child {
+    width: 66%;
+    display: inline-block;
+}
+
+.group-list .list-caculation .sub-list span:last-child {
+    width: 33.4%;
+    display: inline-block;
+}
+
+.sub-list .boder-top {
+    display: inline-block;
+    position: relative;
+}
+
+.sub-list .boder-top::before {
+    content: '';
+    width: 125px;
+    height: 2px;
+    background: #000;
+    position: absolute;
+    top: -4px;
+    right: 0;
+}
+</style>
+
+<body class="[background_pdf_body]">
+  <div class="page">
+    <div class="container text-normal">
+        <div class="content">
+            <div class="row">
+                <div class="col-12 mt-5">
+                    <p class="font-weight-bold mb-2">Bevestigingsbrief</p>
+                    <br>
+                    <p class="mb-2">Geachte [customer_name],</p>
+                    <br>
+                    <p class="mb-2">Welkom als klant bij Kikker Energie. Dank dat je voor de levering van [product_type] via wederverkoper [reseller_name] hebt gekozen voor Kikker Energie. Je krijgt van ons Kikker Energie Stroom en Gas geleverd.</p>
+                    <br>
+                    <p class="mb-0">In de bijlagen bij deze bevestigingsbrief tref je de volgende documenten aan:</p>
+                    <ul class="list-aan">
+                        <li>Je contract</li>
+                        <li>Productvoorwaarden Kikker Energie Stroom en Gas</li>
+                        <li>Algemene Voorwaarden voor de levering van elektriciteit en gas aan kleinverbruikers</li>
+                        <li>Kwaliteitscriteria</li>
+                        <li>Modelformulier voor herroeping/ontbinding</li>
+                    </ul>
+                    <p class="mb-2 mt-4">Bewaar de documenten in combinatie met deze bevestigingsbrief goed bij je administratie.</p>
+                    <br>
+                    <p class="mb-2">Heb je vragen over deze bevestigingsbrief, (één van) de bijlagen of anderszins? Dan kun je contact opnemen met wederverkoper [reseller_name].</p>
+                    <br>
+                    <p class="mb-2">Wij willen je nogmaals hartelijk bedanken voor het afsluiten van je energiecontract bij Kikker Energie en kijken uit naar een prettige samenwerking.</p>
+                    <br>
+                    <p class="mb-2">Met vriendelijke groet,</p>
+                    <br>
+                    <p class="mb-2">Kikker Energie B.V.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div style="page-break-before: always">&nbsp;</div>
+
+    <div class="page">
+        <div class="container text-normal">
+            <div class="content">
+                <div class="row">
+                    <div class="col-12 mt-5">
+                        <div class="mb-4 content-contract">
+                            <p class="font-weight-bold mb-2 title-description">Onze gegevens</p>
+                            <div class="row mb-1">
+                                <div class="col-2">Naam</div>
+                                <div class="col-10 pl-5">: Kikker Energie B.V.</div>
+                            </div>
+                            <div class="row mb-1">
+                                <div class="col-2">Adres</div>
+                                <div class="col-10 pl-5">: tt. Vasumweg 122</div>
+                            </div>
+                            <div class="row mb-1">
+                                <div class="col-2">Postcode</div>
+                                <div class="col-10 pl-5">: 1033 SH</div>
+                            </div>
+                            <div class="row mb-1">
+                                <div class="col-2">Plaats</div>
+                                <div class="col-10 pl-5">: Amsterdam</div>
+                            </div>
+                            <div class="row mb-1">
+                                <div class="col-2">Telefoon</div>
+                                <div class="col-10 pl-5">: 020-2994200</div>
+                            </div>
+                            <div class="row mb-1">
+                                <div class="col-2">E-mail</div>
+                                <div class="col-10 pl-5">: <a href="mailto:servicedesk@kikker.nl">servicedesk@kikker.nl</a></div>
+                            </div>
+                            <div class="row mb-1">
+                                <div class="col-2">KvK-nummer</div>
+                                <div class="col-10 pl-5">: 71246681</div>
+                            </div>
+                        </div>
+
+                        <div class="mb-4 content-contract">
+                                <p class="font-weight-bold mb-2 title-description">Gegevens wederverkoper</p>
+                                <div class="row mb-1">
+                                    <div class="col-2">Naam</div>
+                                    <div class="col-10 pl-5">: [reseller_name]</div>
+                                </div>
+                                <div class="row mb-1">
+                                    <div class="col-2">Vestigingsadres</div>
+                                    <div class="col-10 pl-5">: [r_adres]</div>
+                                </div>
+                                <div class="row mb-1">
+                                    <div class="col-2">Postcode</div>
+                                    <div class="col-10 pl-5">: [r_postcode]</div>
+                                </div>
+                                <div class="row mb-1">
+                                    <div class="col-2">Plaats</div>
+                                    <div class="col-10 pl-5">: [r_plaats]</div>
+                                </div>
+                                <div class="row mb-1">
+                                    <div class="col-2">Telefoon</div>
+                                    <div class="col-10 pl-5">: [r_telefoonnummer]</div>
+                                </div>
+                                <div class="row mb-1">
+                                    <div class="col-2">E-mail</div>
+                                    <div class="col-10 pl-5">: <a>[r_emailadres]</a></div>
+                                </div>
+                                <!-- <div class="row mb-1">
+                                    <div class="col-2">Bankrekening</div>
+                                    <div class="col-10 pl-5">: [r_bankrekeningnummer]</div>
+                                </div> -->
+                        </div>
+
+                        <div class="mb-4 content-contract">
+                            <p class="font-weight-bold mb-2 title-description">Uw gegevens</p>
+                            <div class="row mb-1">
+                                <div class="col-2">Naam</div>
+                                <div class="col-10 pl-5">: [c_naam]</div>
+                            </div>
+                            <div class="row mb-1">
+                                <div class="col-2">Vestigingsadres</div>
+                                <div class="col-10 pl-5">: [c_adres]</div>
+                            </div>
+                            <div class="row mb-1">
+                                <div class="col-2">Postcode</div>
+                                <div class="col-10 pl-5">: [c_postcode]</div>
+                            </div>
+                            <div class="row mb-1">
+                                <div class="col-2">Plaats</div>
+                                <div class="col-10 pl-5">: [c_plaats]</div>
+                            </div>
+                            <div class="row mb-1">
+                                <div class="col-2">Telefoon</div>
+                                <div class="col-10 pl-5">: [c_telefoonnummer]</div>
+                            </div>
+                            <div class="row mb-1">
+                                <div class="col-2">E-mail</div>
+                                <div class="col-10 pl-5">: <a>[c_emailadres]</a></div>
+                            </div>
+                            <div class="row mb-1">
+                                <div class="col-2">Geboortedatum</div>
+                                <div class="col-10 pl-5">: [c_geboortedatum]</div>
+                            </div>
+                            <div class="row mb-1">
+                                <div class="col-2">Bankrekening</div>
+                                <div class="col-10 pl-5">: [c_bankrekeningnummer]</div>
+                            </div>
+                            <div class="row mb-1">
+                                <div class="col-2">Klantnummer</div>
+                                <div class="col-10 pl-5">: [c_klantnummer]</div>
+                            </div>
+                        </div>
+
+                        <div class="mb-4 content-contract [delivery_visible]">
+                            <p class="font-weight-bold mb-2 title-description">Leveringsadres</p>
+                            <p class="mb-1">(wanneer dit anders is dan het adres onder ‘uw gegevens’)</p>
+                            <div class="row mb-1">
+                                <div class="col-2">Naam</div>
+                                <div class="col-10 pl-5">: [c_naam]</div>
+                            </div>
+                            <div class="row mb-1">
+                                <div class="col-2">Aansluitadres</div>
+                                <div class="col-10 pl-5">: [delivery_adres]</div>
+                            </div>
+                            <div class="row mb-1">
+                                <div class="col-2">Postcode</div>
+                                <div class="col-10 pl-5">: [delivery_postcode]</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="page-break-before: always">&nbsp;</div>
+
+    <div class="page">
+        <div class="container text-normal">
+            <div class="content">
+                <div class="row">
+                    <div class="col-12 mt-5">
+                        <div class="mb-4 content-contract">
+                            <p class="font-weight-bold mb-2 title-description">Je contract</p>
+                            <p class="mb-3">Je hebt op [c_create_date] een contract gesloten met Kikker Energie B.V. (hierna “Kikker Energie”) voor de levering van Kikker Energie Stroom en Gas voor [c_duration] met een prijs per maand gebaseerd op de handelsbeurs (APX voor Stroom en LEBA voor Gas). Wij hebben afgesproken dat de levering van Kikker Energie Stroom en Gas start op [c_start_date] [pre_end_date] [c_end_date].</p>
+                            <p class="mb-3">Je hebt alle vrijheid om het contract <text class="[variable_contract_visible]">op ieder moment</text><text class="[normal_contract_visible]">tegen de einddatum</text> op te zeggen met inachtneming van een opzegtermijn van [c_cancel_period]. </p>
+                            <!-- <p class="mb-3">[contract_duration_note]</p> -->
+                            <p class="mb-3">Je krijgt van ons de volgende soorten elektriciteit en/of gas geleverd:</p>
+                            <div class="row">
+                                <div class="col-3">Type elektriciteit</div>
+                                <div class="col-9">: groen</div>
+                                <!-- [type_electric] -->
+                                <!-- <div class="col-9">: 100% groen en opgewekt uit een samenstelling van duurzame en hernieuwbare energiebronnen, zoals zon, wind, waterkracht en biomassa;</div> -->
+                            </div>
+                            <!-- <div class="row mb-4">
+                                <div class="col-3">Type gas</div>
+                                <div class="col-9">: gewonnen uit fossiele bronnen.</div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="page-break-before: always">&nbsp;</div>
+
+    <div class="page">
+        <div class="container text-normal">
+            <div class="content">
+                <div class="row">
+                    <div class="col-12 mt-5">
+                        <div class="mb-4">
+                            <p class="font-weight-bold mb-2 title-description">Je tarieven</p>
+                            <p class="mb-3">Voor Kikker Energie Stroom en Gas ga je als termijnbedrag maandelijks een bedrag van € [monthly_amount] betalen. Op jaarbasis zou dit neerkomen op een bedrag van € [yearly_amount]. Het termijnbedrag is gebaseerd op de door je aan ons verstrekte gegevens en wordt als volgt opgebouwd:</p>
+                            <p class="mb-3">
+                                <a class="link-elk" href="#">Elektriciteit</a>
+                            </p>
+
+                            <div class="mb-3">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <th class="pl-2 font-weight-bold">Verwacht verbruik</th>
+                                        <th class="pr-2">jaarvolume</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="[single_visible]">
+                                            <td class="pl-2">Enkel</td>
+                                            <td class="pr-2"><span class="cut-text">[single_usage] kWh</span></td>
+                                        </tr>
+                                        <tr class="[double_visible]">
+                                            <td class="pl-2">Normaal</td>
+                                            <td class="pr-2"><span class="cut-text">[normal_usage] kWh</span></td>
+                                        </tr>
+                                        <tr class="[double_visible]">
+                                            <td class="pl-2">Dal</td>
+                                            <td class="pr-2"><span class="cut-text">[off_peak_usage] kWh</span></td>
+                                        </tr>
+                                        <tr class="[return_delivery_visible]">
+                                            <td class="pl-2">Teruglevering</td>
+                                            <td class="pr-2"><span class="cut-text">[return_delivery_usage] kWh</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div>
+                                <table class="table table-striped">
+                                    <thead>
+                                        <th class="pl-2 font-weight-bold">Stroomprijs</th>
+                                        <th class="pr-2">(prijzen getoond inclusief btw en in kWh)</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="pl-2">Inkoopprijs</td>
+                                            <td class="pr-2"><span class="cut-text">Ongewogen APX maandprijs</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-2">Inkoopvergoeding</td>
+                                            <td class="pr-2"><span class="cut-text">€ [elk_top_up_fee]</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-2">Variabele leveringstarief per maand<text class="[AL_contract_visible]"> (enkeltarief)</text></td>
+                                            <td class="pr-2"><span class="cut-text">Inkoopprijs + inkoopvergoeding*</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-2">Overheidsheffingen</td>
+                                            <td class="pr-2"><span class="cut-text">€ [elk_enegry_tax_ODE]</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <p class="mb-3 mt-4">* Voor stroom betaal je een variabel leveringstarief per kWh. Dit tarief wijzigt iedere maand en is gebaseerd op de ongewogen maandprijs van de handelsbeurs (APX) met een opslag van € [elk_top_up_fee] per kWh. Het variabele leveringstarief per maand per kWh wordt derhalve opgebouwd door eerst de Kikker Energie dagprijs te berekenen, door de dagprijs van de handelsbeurs (APX) per kWh te vermeerderen met € [elk_top_up_fee] per kWh. Vervolgens worden alle Kikker Energie dagprijzen in de maand bij elkaar opgeteld en gedeeld door het aantal dagen in de maand.</p>
+
+                            <div>
+                                <table class="table table-striped">
+                                    <thead>
+                                        <th class="pl-2 font-weight-bold">Vaste kosten</th>
+                                        <th class="pr-2">(inclusief overheidsheffingen en btw)</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="pl-2">Vaste leveringskosten</td>
+                                            <td class="pr-2"><span class="cut-text">€ [fixed_delivery_cost] per dag</span></td>
+                                        </tr>
+                                        <tr class="[reduction_visible]">
+                                            <td class="pl-2">Vermindering energiebelasting</td>
+                                            <td class="pr-2"><span class="cut-text">€ [reduction_tax] per dag</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-2">Netbeheerkosten**</td>
+                                            <td class="pr-2"><span class="cut-text">€ [grid_operator_cost] per dag</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <p class="mb-3 mt-4">** De netbeheerkosten zijn gebaseerd op de jaarlijkse kosten van je netbeheerder. Op je jaarnota zie je jouw netbeheerkosten berekend via een dagprijs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="page-break-before: always">&nbsp;</div>
+
+    <div class="page">
+        <div class="container text-normal">
+            <div class="content">
+                <div class="row">
+                    <div class="col-12 mt-5">
+                        <div class="mb-4">
+                            <p class="mb-3">Je betaalt per energieproduct (elektriciteit en/of gas) vaste leveringskosten. Dit zijn de kosten ongeacht de hoogte van je verbruik. Tijdens de vaste looptijd van je contract wijzigen deze vaste leveringskosten niet.</p>
+                            <p class="mb-3">De overheid kan de heffingen en btw op stroom en gas wijzigen tijdens de looptijd van je contract. Dit berekenen we aan je door. Verder mogen wij de tarieven wijzigen (i) als de netbeheerder de tarieven wijzigt; (ii) als de gasprofielen veranderen en/of (iii) vanwege een overheidsmaatregel.</p>
+                            <p class="mb-3">Het maandelijks door je te betalen termijnbedrag is een voorschot, geschat op basis van de door je aangeleverde verbruiksgegevens. Eén keer per jaar vindt, op basis van jouw daadwerkelijke verbruik, een eindafrekening plaats.</p>
+
+                            <p class="font-weight-bold mb-2 mt-4 title-description">Teruglevering en salderen</p>
+                            <p class="mb-3">Als je zelf energie opwekt en eventueel een deel daarvan teruglevert, geldt het volgende:</p>
+                            <p class="mb-3">Wijze van salderen: Op je energienota staat hoeveel energie je geleverd hebt gekregen van ons. Daarvan wordt de energie die je hebt teruggeleverd afgetrokken. Deze aftreksom heet salderen. Niet alle energie die je teruglevert levert telt mee voor het salderen. Er is een salderingsgrens vastgesteld. De salderingsgrens is gelijk aan de hoeveelheid energie die wij aan je geleverd hebben. Je kunt dus nooit meer salderen dan de hoeveelheid energie die je geleverd hebt gekregen.</p>
+                            <p class="mb-3">Terugleververgoeding: Indien je meer elektriciteit teruglevert dan verbruikt, dan geldt voor het meerdere een terugleververgoeding van € 0,0847 per kWh, inclusief btw. Deze terugleververgoeding is van toepassing bij zowel één alsmede twee actieve telwerken.</p>
+                            <!-- <p class="mb-3">Meer informatie hierover vindt u op <a href="https://www.kikker.nl">www.kikker.nl</a>.</p> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="page-break-before: always">&nbsp;</div>
+
+    <div class="page">
+        <div class="container text-normal">
+            <div class="content">
+                <div class="row">
+                    <div class="col-12 mt-5">
+                        <div class="mb-4">
+                            <p class="font-weight-bold mb-2 title-description">Wijze van betaling</p>
+
+                            <p class="mb-3">Je ontvangt maandelijks een factuur voor het overeengekomen termijnbedrag. Eenmaal per jaar ontvang je de jaarafrekening. Je voldoet de maandfacturen rechtstreeks aan Kikker Energie B.V. Je kunt daarbij kiezen tussen betaling door middel van handmatige overboekingen of automatische incasso.</p>
+
+                            <p class="mb-3">Indien je kiest voor automatische incasso wordt rond de dag binnen de maand waarop de initiële levering plaatsvindt het termijnbedrag voor de opvolgende maand van je rekening afgeschreven. Indien je kiest voor betaling door middel van handmatige overboeking, worden er per factuur € 0,25 aan bijkomende verwerkingskosten bij je in rekening gebracht. De betaaltermijn bij handmatige overboeking is steeds 14 dagen na de factuurdatum.</p>
+                            
+                            <p class="font-weight-bold mb-2 title-description">Je voorwaarden</p>
+                            
+                            <p>Je Kikker Energie Stroom en Gas Contract bestaat uit:</p>
+                            <ul class="list-aan mb-3">
+                                <li>Deze bevestigingsbrief</li>
+                                <li>De Productvoorwaarden Kikker Energie Stroom en Gas (Bijlage A)</li>
+                                <li>De Algemene Leveringsvoorwaarden alsmede de Kikker Energie Kwaliteitscriteria (Bijlage B1 en B2)</li>
+                                <li>Het Modelformulier voor ontbinding (Bijlage C)</li>
+                            </ul>
+
+                            <p class="mb-3">Bewaar de bevestigingsbrief en Bijlagen A, B1 en B2 goed bij je administratie.</p>
+
+                            <p class="font-weight-bold mb-2 title-description">Bedenktijd</p>
+                            <p>Indien je alsnog wilt afzien van dit contract, dan kun je dit kosteloos doen door binnen 14 kalenderdagen na ontvangst van deze bevestiging een verzoek tot annulering in te dienen. Hiervoor mag je gebruik maken van het bijgevoegde “modelformulier voor ontbinding/herroeping”. Meer informatie over het recht op bedenktijd en de voorwaarden daarbij kun je vinden in de Productvoorwaarden Kikker Energie Stroom en Gas.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" style="height: 130px;font-size: 60px; color: #fff;margin-top: 30px;">
+                        [[s|0     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    [multilEan_ELK]
+</body>
+
+</html>

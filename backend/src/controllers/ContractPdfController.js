@@ -2,6 +2,19 @@ const express = require('express');
 const router = express();
 const { ContractPdfService } = require('../services');
 
+router.get('/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        if(!id) {
+            return res.sendStatus(404);
+        }
+        const pdf = await ContractPdfService.getById(id);
+        return res.status(200).json(pdf);
+    } catch (error) {
+        return res.sendStatus(500);
+    }
+});
+
 router.get('/', async (req, res) => {
     try {
         const pdfs = await ContractPdfService.getAll();
@@ -48,4 +61,30 @@ router.post('/copy-to-demo', async (req, res) => {
     }
 });
 
+router.post('/copy-to-white-rs', async (req, res) => {
+    try {
+        const id = req.fields.id;
+        if(!id) {
+            res.sendStatus(404);
+        }
+        const result = await ContractPdfService.copyToWhiteRs(id);
+        return res.status(200).json(result);
+    } catch (error) {
+        console.log(error)
+        res.sendStatus(500);
+    }
+});
+
+
+router.post('/restore-from-demo', async (req, res) => {
+    try {
+        const template_name = req.fields.template_name
+        const result = await ContractPdfService.restoreFromDemo(template_name);
+        return res.status(200).json(result);
+    } catch (error) {
+        console.log(error)
+        res.sendStatus(500);
+
+    }
+});
 module.exports = router;

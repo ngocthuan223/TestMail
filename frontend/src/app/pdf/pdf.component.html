@@ -33,10 +33,14 @@
                         >Edit</button>
                     <button mat-menu-item (click)="reviewPdfPopup(pdf);"
                         >View</button>
+                    <button mat-menu-item (click)="copyToWhiteRs(pdf);"
+                        >Copy to white rs</button>
                     <!-- <button mat-menu-item (click)="copyToWhiteRs(mail);"
                         >Copy to white rs</button> -->
                     <button mat-menu-item (click)="copyToDemo(pdf);"
                         >Copy to demo</button>
+                    <button mat-menu-item (click)="restoreFromDemo(pdf);"
+                        >Restore from Demo</button>
                 </mat-menu>
             </td>
         </tr>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Billing | Kikker</title>
+  <meta charset="utf-8">
+  <link rel="icon" href="asset/kikker-icon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://storage.googleapis.com/kikkerprodbucket/static-files/pdf-css/site.css">
+</head>
+
+<style>
+    /* Font css */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800,900&display=swap');
+
+body {
+    background-color: #ffff;
+    font-family: DIN;
+    font-size: 26px;
+}
+.text-bold{
+    font-weight: bold;
+}
+.text-small {
+    font-size: 13px !important;
+}
+.text-normal {
+    font-size: 16px !important;
+}
+.table-header{
+    margin-bottom: 0px !important;
+    border-bottom: 2px solid black !important; 
+}
+.table-striped-even tbody tr:nth-of-type(even){
+    background-color: rgba(0,0,0,.05);
+}
+.bolder-top {
+    border-top: 2px solid black !important; 
+}
+
+.bolder-top-light {
+    border-top: 1px solid black !important; 
+}
+.logo {
+    font-size: 20px !important;
+}
+
+.logo-image .wrap-logo img {
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+    border-radius: 0;
+    object-fit: cover;
+    border: none;
+    background: #fff;
+}
+
+.wrap-logo {
+    max-width: 0.99in;
+    height: 0.86in;
+    border-radius: 0;
+    border: none;
+    background: #fff;
+}
+
+.logo-image p {
+    font-size: 35px;
+    margin: 0;
+    line-height: 82px;
+    width: 0.99in;
+    height: 0.86in;
+    text-align: center;
+    background-color: rgb(0, 146, 153);
+    color: #fff;
+    margin-right: auto;
+}
+
+.name-reseller {
+	position: relative;
+	padding-left: 15px;
+    display: inline-block;
+    display: none;
+}
+
+.name-reseller p {
+	margin: 0;
+}
+
+.name-reseller p:first-child {
+	font-weight: bold;
+    font-size: 32px !important;
+    color: #000;
+    padding-top: 8px;
+    line-height: 42px;
+}
+
+.name-reseller p:last-child {
+	font-size: 26px !important;
+    color: #3AA3AA;
+    line-height: 42px;
+    padding-bottom: 8px
+}
+
+.name-reseller:before {
+	content: '';
+	position: absolute;
+	left: 0;
+	height: 100%;
+	width: 2px;
+	background: #BFBFBF;
+	top: 0;
+}
+
+#first .container,
+#second .container,
+#third .container {
+    width: 21cm;
+    position: relative;
+}
+
+#first .container {
+    height: 34.5cm;
+}
+
+#second .container{
+    height: 34.5cm;
+}
+
+#third .container {
+    height: 34cm;
+}
+
+#first .container .row.footer,
+#second .container .row.footer,
+#third .container .row.footer {
+    position: absolute;
+    width: 100%;
+    bottom: 1px;
+}
+
+.pdl-pdr-0 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+table th {
+    font-weight: 400;
+}
+
+.table td, .table th {
+    padding: 0.3rem;
+}
+.green-tr {
+    background: #24441F;
+    color: #fff;
+}
+.report {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    background: #24441F;
+    color: #fff;
+    padding: 12px;
+    font-size: 11px;
+    bottom: -20px;
+    margin-bottom: 0;
+}
+.table-grey tr {
+    background-color: rgba(0,0,0,.05);
+}
+.text-logo {
+    color: #24441F;
+    font-size: 40px;
+    font-weight: 900;
+    position: relative;
+    line-height: 100%;
+    font-family: 'Montserrat';
+}
+
+.text-logo span {
+    font-weight: 500;
+    position: absolute;
+    bottom: -8px;
+    left: 85px;
+    line-height: 100%;
+}
+.table thead th {
+    border-top: 0;
+}
+.table td {
+    color: #505050;
+    border-top: 0;
+}
+.green-tr td {
+    color: #fff;
+}
+.table thead th {
+    border-bottom: 1px solid #000;
+}
+.table thead th:first-child {
+    color: #6d6d6d;
+    min-width: 250px;
+}
+.text-black td {
+    color: #000;
+}
+    /* .total-tr div:first-child {
+        width: 482px;
+    }
+.total-tr div:not(:first-child) {
+    width: calc(50% - 241px);
+    padding-left: 8px;
+    font-weight: bold;
+    display: inline-block;
+} */
+.total-tr {
+    padding-left: 12.12cm;
+}
+
+.total-tr div {
+    font-weight: bold;
+}
+.total-tr div:first-child {
+    width: 4.18cm;
+}
+
+.total-tr div:last-child {
+    width: 3.44cm;
+}
+
+#second .table-6-col tr td:first-child {
+    width: 250px;
+}
+
+.tr-total {
+    background: #fff !important;
+    border-top: 1px solid #000;
+}
+
+.tr-sustainable-tax2 td {
+    padding-bottom: 30px;
+}
+
+.table-13 .cut-text {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 120px;
+    display: inline-block;
+}
+
+.table-4 .cut-text {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 50px;
+    display: inline-block;
+}
+.page .container, #first .container, .second .container, #third .container {
+    position: relative;
+    max-width: 100% !important;
+}
+</style>
+
+<body>
+  <div class="page">
+    <div class="container text-normal">
+        <div class="content">
+            <div class="row">
+                <div class="col-12 mt-5">
+                    [customer_name]<br>
+                    [bill_street] [bill_hour_nr] [bill_hour_nr_ex]<br>[bill_zipcode] [bill_city]
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 mt-5">
+                    <p>Beste mevrouw Venker,</p>
+                    <p>
+                        Dit is uw jaarafrekening over de verbruiksperiode van [start_yearly_blling] tot en met [end_yearly_blling] voor [delivery_street] [delivery_hour_nr] [delivery_hour_nr_ex] [delivery_zipcode] [delivery_city]. Wij hebben uw nieuwe termijnbedrag vastgesteld op € [monthly_amount]. Dit bedrag is gebaseerd op uw gemiddelde energieverbruik. Dit bedrag zal maandelijks rond de 25e worden geïncasseerd van uw rekening.
+                    </p>
+                    <p>Met vriendelijke groet, Kikker Energie</p>
+                </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-9">
+                <div class="text-bold mt-2 mb-1 pl-2">Jaarafrekening [start_yearly_blling] t/m [end_yearly_blling] </div>
+                <div class="bolder-top-light"></div>
+                <table class="table table-striped table-13">
+                    <tbody>
+                        <tr>
+                            <td class="pl-2">Leveringskosten elektriciteit</td>
+                            <td class="text-right pr-2"><span class="cut-text">[total_delivery_costs]</span></td>
+                        </tr>
+                        <tr>
+                            <td class="pl-2">Netbeheerkosten elektriciteit</td>
+                            <td class="text-right pr-2"><span class="cut-text">[total_grid_operator_costs]</span></td>
+                        </tr>
+                        <tr>
+                            <td class="pl-2">Overheidsheffingen elektriciteit</td>
+                            <td class="text-right pr-2"><span class="cut-text">[total_government_costs]</span></td>
+                        </tr>
+                        <tr>
+                            <td class="font-weight-bold pr-2">Totaal elektriciteit</td>
+                            <td class="font-weight-bold text-right pr-2"><span class="cut-text">[total_used]</span></td>
+                        </tr>
+                        <tr>
+                            <td class="pl-2">Totaal in rekening gebrachte termijnbedragen</td>
+                            <td class="text-right pr-2"><span class="cut-text">-[total_paid]</span></td>
+                        </tr>
+                        <tr class="green-tr">
+                            <td class="pl-2 font-weight-bold">Door u te ontvangen
+                                <span class="font-weight-normal">(inclusief BTW)</span>
+                            </td>
+                            <td class="text-right pr-2 font-weight-bold"><span class="cut-text">€ [total_amount]</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+              </div>
+              <div class="col-3">
+                  <p class="report">
+                    Dit bedrag wordt omstreeks 14
+                    juli 2019 op rekeningnummer
+                    INGB0011489149 bijgeschreven.
+                </p>
+              </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-9">
+                    <div class="text-bold mt-4 mb-1 pl-2">Uw betaalde termijnbedragen</div>
+                    <div class="bolder-top-light"></div>
+                    <table class="table table-grey table-4">
+                        <tbody>
+                            <tr class="text-small">
+                                <td class="pl-3">[month_0]</td>
+                                <td><span class="cut-text">€ [monthly_0_amount]</span></td>
+                                <td>[month_4]</td>
+                                <td><span class="cut-text">€ [monthly_4_amount]</span></td>
+                                <td>[month_8]</td>
+                                <td class="pr-3"><span class="cut-text">€ [monthly_8_amount]</span></td>
+                            </tr>
+                            <tr class="text-small">
+                                <td class="pl-3">[month_1]</td>
+                                <td><span class="cut-text">€ [monthly_1_amount]</span></td>
+                                <td>[month_5]</td>
+                                <td><span class="cut-text">€ [monthly_5_amount]</span></td>
+                                <td>[month_9]</td>
+                                <td class="pr-3"><span class="cut-text">€ [monthly_9_amount]</span></td>
+                            </tr>
+                            <tr class="text-small">
+                                <td class="pl-3">[month_2]</td>
+                                <td><span class="cut-text">€ [monthly_2_amount]</span></td>
+                                <td>[month_6]</td>
+                                <td><span class="cut-text">€ [monthly_6_amount]</span></td>
+                                <td>[month_10]</td>
+                                <td class="pr-3"><span class="cut-text">€ [monthly_10_amount]</span></td>
+                            </tr>
+                            <tr class="text-small">
+                                <td class="pl-3">[month_3]</td>
+                                <td><span class="cut-text">€ [monthly_3_amount]</span></td>
+                                <td>[month_7]</td>
+                                <td><span class="cut-text">€ [monthly_7_amount]</span></td>
+                                <td>[month_11]</td>
+                                <td class="pr-3"><span class="cut-text">€ [monthly_11_amount]</span></td>
+                            </tr>
+                        </tbody>    
+                    </table>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-9">
+                    <div class="text-bold mt-2 mb-1 pl-2">Nieuw termijnbedrag elektriciteit</div>
+                    <div class="bolder-top-light"></div>
+                    <table class="table table-striped table-13">
+                        <tbody>
+                            <tr>
+                                <td class="pl-2">[delivery_street] [delivery_hour_nr] [delivery_hour_nr_ex] [delivery_zipcode] [delivery_city]</td>
+                                <td class="text-right pr-2"><span class="cut-text">[monthly_amount]</span></td>
+                            </tr>
+                            <tr class="green-tr">
+                                <td class="pl-2 font-weight-bold">Door u te ontvangen
+                                    <span class="font-weight-normal">(inclusief BTW)</span>
+                                </td>
+                                <td class="text-right pr-2 font-weight-bold"><span class="cut-text">€ [monthly_amount]</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-3">
+                    <p class="report">
+                        Gaat een maand na de factuurdatum in. Wij brengen dit termijnbedrag apart in rekening.
+                    </p>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</body>
+
+</html>

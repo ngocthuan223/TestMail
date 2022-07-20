@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Product term | Kikker</title>
+  <meta charset="utf-8">
+  <link rel="icon" href="asset/kikker-icon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://storage.googleapis.com/kikkerprodbucket/static-files/pdf-css/site.css">
+</head>
+
+<style>
+    /* Font css */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800,900&display=swap');
+
+body {
+    background-color: #ffff;
+    font-family: DIN;
+    font-size: 26px;
+}
+.text-bold{
+    font-weight: bold;
+}
+.text-small {
+    font-size: 13px !important;
+}
+.text-normal {
+    font-size: 16px !important;
+}
+.table-header{
+    margin-bottom: 0px !important;
+    border-bottom: 2px solid black !important; 
+}
+.table-striped-even tbody tr:nth-of-type(even){
+    background-color: rgba(0,0,0,.05);
+}
+.bolder-top {
+    border-top: 2px solid black !important; 
+}
+
+.bolder-top-light {
+    border-top: 1px solid black !important; 
+}
+.logo {
+    font-size: 20px !important;
+}
+
+.logo-image .wrap-logo img {
+    max-height: 100%;
+    border-radius: 0;
+    object-fit: cover;
+    border: none;
+    background: #fff;
+    max-width: 100%;
+}
+
+.wrap-logo {
+    height: 30mm;
+    border-radius: 0;
+    border: none;
+    background: #fff;
+    max-width: 50%;
+}
+
+.logo-image p {
+    font-size: 35px;
+    margin: 0;
+    line-height: 82px;
+    width: 0.99in;
+    height: 0.86in;
+    text-align: center;
+    background-color: rgb(0, 146, 153);
+    color: #fff;
+    margin-right: auto;
+}
+
+.name-reseller {
+	position: relative;
+	padding-left: 15px;
+    display: inline-block;
+    display: none;
+}
+
+.name-reseller p {
+	margin: 0;
+}
+
+.name-reseller p:first-child {
+	font-weight: bold;
+    font-size: 32px !important;
+    color: #000;
+    padding-top: 8px;
+    line-height: 42px;
+}
+
+.name-reseller p:last-child {
+	font-size: 26px !important;
+    color: #3AA3AA;
+    line-height: 42px;
+    padding-bottom: 8px
+}
+
+.name-reseller:before {
+	content: '';
+	position: absolute;
+	left: 0;
+	height: 100%;
+	width: 2px;
+	background: #BFBFBF;
+	top: 0;
+}
+
+#first .container,
+.second .container,
+#third .container {
+    position: relative;
+    max-width: 100% !important;
+}
+
+#first .container {
+    height: 35.2cm;
+}
+
+.second .container{
+    height: 35.2cm;
+}
+
+#third .container {
+    height: 34cm;
+}
+
+#first .container .row.footer,
+.second .container .row.footer,
+#third .container .row.footer {
+    position: absolute;
+    width: 100%;
+    bottom: 1px;
+}
+
+.pdl-pdr-0 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+table th {
+    font-weight: 400;
+}
+
+.table td, .table th {
+    padding: 0.3rem;
+}
+.green-tr {
+    background: #24441F;
+    color: #fff;
+}
+.report {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    background: #24441F;
+    color: #fff;
+    padding: 12px;
+    font-size: 11px;
+    bottom: -20px;
+    margin-bottom: 0;
+}
+.table-grey tr {
+    background-color: rgba(0,0,0,.05);
+}
+.text-logo {
+    color: #24441F;
+    font-size: 40px;
+    font-weight: 900;
+    position: relative;
+    line-height: 100%;
+    font-family: 'Montserrat';
+}
+
+.text-logo img {
+    height: auto;
+    max-height: 75px;
+    border-radius: 0;
+    object-fit: contain;
+    border: none;
+    background: #fff;
+    width: auto;
+    max-width: 100%;
+}
+
+.text-logo span {
+    font-weight: 500;
+    position: absolute;
+    bottom: -8px;
+    left: 85px;
+    line-height: 100%;
+}
+.table thead th {
+    border-top: 0;
+}
+.fix-table thead th:last-child {
+    min-width: 250px;
+}
+.table td {
+    color: #212529;
+    border-top: 0;
+}
+.green-tr td {
+    color: #fff;
+}
+.table thead th {
+    border-bottom: 1px solid #000;
+}
+.table thead th:first-child {
+    /* color: #6d6d6d; */
+    min-width: 250px;
+}
+.text-black td {
+    color: #000;
+}
+    /* .total-tr div:first-child {
+        width: 482px;
+    }
+.total-tr div:not(:first-child) {
+    width: calc(50% - 241px);
+    padding-left: 8px;
+    font-weight: bold;
+    display: inline-block;
+} */
+.total-tr {
+    padding-left: 12.12cm;
+}
+
+.total-tr div {
+    font-weight: bold;
+}
+.total-tr div:first-child {
+    width: 4.18cm;
+}
+
+.total-tr div:last-child {
+    width: 3.44cm;
+}
+
+#first .table-6-col tr td:first-child,
+.second .table-6-col tr td:first-child {
+    width: 250px;
+}
+
+.tr-total {
+    background: #fff !important;
+    border-top: 1px solid #000;
+}
+
+.tr-sustainable-tax2 td {
+    padding-bottom: 30px;
+}
+
+.table-13 .cut-text {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 120px;
+    display: inline-block;
+}
+
+.table-4 .cut-text {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 50px;
+    display: inline-block;
+}
+.list-aan {
+    padding-left: 17px;
+}
+
+.list-aan li {
+    list-style-type: square;
+    padding-left: 10px;
+}
+.title-description {
+    font-size: 18px;
+}
+.content-contract > p {
+    display: flex;
+    width: 100%;
+    text-align: left;
+}
+.content-contract > p span:last-child {
+    /* float: right; */
+    width: calc(100% - 160px);
+    min-width: calc(100% - 160px);
+    max-width: calc(100% - 160px);
+    text-align: left;
+    display: inline-block;
+}
+
+.content-contract > p span:first-child {
+    min-width: 160px;
+    max-width: 160px;
+    width: 160px;
+    display: inline-block;
+}
+.link-elk {
+    color: #212529;
+    text-decoration: underline
+}
+.link-elk:hover {
+    color: #212529;
+}
+a {
+    text-decoration: underline;
+}
+
+.background-pdf .page > .container {
+    background-image: url('data:image/png;base64,[background_pdf]');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.background-pdf .header,
+.background-pdf .footer {
+    opacity: 0;
+}
+
+.background-pdf .page .content {
+    padding-top: 60px;
+}
+</style>
+
+<body class="[background_pdf_body]">
+    <div class="page second" id="first">
+        <div class="container text-normal">
+            <div class="row header mt-2 pt-2 mr-0 ml-0">
+                <div style="width: 50%;">
+                    <div style="display: inline-block;vertical-align: top;width: 100%;text-align: left;" class="logo-image">
+                        <div class="wrap-logo">
+                            <img src="[reseller_logo]" class="[reseller_logo_none]">
+                            <!-- <p class="[reseller_name_none]">[reseller_name]</p> -->
+                        </div>
+                    </div>
+                    <!-- <div class="name-reseller">
+                        <p>[supplier_name]</p>
+                        <p>MEDIAMARKET</p>
+                    </div> -->
+                </div>
+                <div style="width: 50%;" class="text-small row mr-0 ml-0">
+                </div>
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-12 mt-5">
+                        <div class="mb-4">
+                            <p class="font-weight-bold mb-3 title-description">Productvoorwaarden Kikker Energie (Groene) Stroom en Gas (Bijlage A)</p>
+
+                            <p class="font-weight-bold mb-2 title-description">1. Energielevering</p>
+                            
+                            <p class="font-weight-bold mb-3 title-description">1.1.Groene Stroom en Gas</p>
+
+                            <p class="mb-3">Kikker Energie Groene Stroom en Gas bestaat voor 100% uit groene stroom opgewekt uit een samenstelling van duurzame en hernieuwbare energiebronnen, zoals zon, wind, waterkracht en biomassa. Het gas wordt gewonnen uit fossiele bronnen. De herkomst is jaarlijks achteraf terug te zien in het stroometiket. Bekijk het stroometiket op <a href="https://www.kikker.nl">www.kikker.nl</a>.</p>
+
+                            <p class="font-weight-bold mb-3 title-description">1.2.Grijze Stroom en Gas</p>
+
+                            <p class="mb-3">Kikker Energie Grijze Stroom en Gas is opgewekt uit fossiele brandstoffen zoals gas, kolen en aardolie. Ook hier is de herkomst achteraf van terug te vinden in het stroometiket top <a href="https://www.kikker.nl">www.kikker.nl</a>.</p>
+                            
+                            <p class="font-weight-bold mb-3 title-description">2. Tarieven en betaling</p>
+                            
+                            <p class="font-weight-bold mb-2 title-description">2.1. Betaling termijnbedragen en jaarnota</p>
+                            <p class="mb-3">Je betaalt iedere maand een termijnbedrag. Eenmaal per jaar krijg je een jaarnota. Op deze jaarnota verrekenen wij jouw verbruik met de door je betaalde termijnbedragen. Ook stellen we een nieuw termijnbedrag vast. Dit nieuwe termijnbedrag baseren we op je verbruik in het voorgaande jaar, de leveringstarieven en de verwachte leveringstarieven van het komende jaar.</p>
+
+                            <p class="font-weight-bold mb-2 title-description">2.2. Betalingsvoorwaarden</p>
+                            <p class="mb-3">De betalingsvoorwaarden verbonden aan het leveren van energie zijn als volgt. Alle door jou verschuldigde vergoedingen, termijnbedragen en kosten moeten bij vooruitbetaling en via automatische incasso of handmatige overboeking worden voldaan. Indien je hebt gekozen voor automatische incasso, heb je Kikker Energie ofwel [reseller_name] (tot wederopzegging) gemachtigd om de kosten voor de levering van stroom en/of gas en de kosten in verband met aansluiting en transport van je netbeheerder automatisch van je bankrekening af te schrijven. Indien je niet akkoord gaat met enige op grond van deze machtiging verrichte boeking heb je het recht binnen 8 weken opdracht te geven tot terugstorting. Kikker Energie is gerechtigd bij betaling anders dan via automatische incasso extra kosten in rekening te brengen.</p>
+
+                            <p class="font-weight-bold mb-2 title-description">2.3. Uitblijven van betalingen</p>
+                            <p class="mb-3">Als je niet op tijd hebt betaald, ontvang je eerst een betaalherinnering. Deze betaalherinnering is kosteloos, tenzij je een betaling terugstort (storneert) of als er een automatische incasso mislukt doordat je onvoldoende saldo hebt. In dit geval stuurt Kikker Energie je een verzoek om de betaling alsnog te voldoen, waarbij we een bedrag van € 2,50 inclusief btw aan administratiekosten in rekening brengen. Deze administratiekosten dien je dan gezamenlijk met de openstaande factuur te voldoen.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row footer my-4 ml-0 mr-0 text-small">
+                <div style="width: 25%;" class="text-left pr-3">
+                    <div class="text-logo">
+                        <img src="[reseller_logo]" class="[reseller_logo_none]">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page second">
+        <div class="container text-normal">
+            <div class="row header mt-2 pt-2 mr-0 ml-0">
+                <div style="width: 50%;">
+                    <div style="display: inline-block;vertical-align: top;width: 100%;text-align: left;" class="logo-image">
+                        <div class="wrap-logo">
+                            <img src="[reseller_logo]" class="[reseller_logo_none]">
+                            <!-- <p class="[reseller_name_none]">[reseller_name]</p> -->
+                        </div>
+                    </div>
+                    <!-- <div class="name-reseller">
+                        <p>[supplier_name]</p>
+                        <p>MEDIAMARKET</p>
+                    </div> -->
+                </div>
+                <div style="width: 50%;" class="text-small row mr-0 ml-0">
+                </div>
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-12 mt-5">
+                        <div class="mb-4">
+
+                            <p class="mb-3">Als je binnen 14 dagen, de betaaltermijn van de eerste herinnering, je betalingsverplichting alsnog niet nakomt, betaal je de volgende kosten: Aanmaning van een niet betaalde nota: dit betreft 15% van het aan Kikker Energie verschuldigde bedrag, met een minimumbedrag van € 40,00. Als een vordering ter incasso wordt overgedragen aan een derde partij, kan deze partij extra kosten in rekening brengen. De totale buitengerechtelijke kosten voor een aanmaning, een (slot)sommatie en de kosten van een derde partij zijn maximaal de wettelijk toegestane buitengerechtelijke kosten per nota.</p>
+
+                            <p class="font-weight-bold mb-2 title-description">2.4. Kredietwaardigheidscontrole</p>
+                            <p>Nadat je contract met Kikker Energie is getekend, voert Kikker Energie een kredietwaardigheidscontrole uit om te controleren of het aannemelijk is dat je als klant van Kikker Energie in staat bent om je financiële verplichtingen te voldoen. Deze controle wordt uitgevoerd door een daartoe gespecialiseerd bureau, altijd met inachtneming van je privacy. Uit deze controle kan blijken dat we vanuit onze risicobeheersingskaders aandacht moeten besteden aan jouw kredietwaardigheid. Als gevolg hiervan kan Kikker Energie (een van) de volgende acties ondernemen:</p>
+
+                            <div class="d-flex ml-3">
+                                <p>1.</p>
+                                <p class="ml-3">Betaling van een waarborgsom. Kikker Energie kan je verzoeken om een waarborgsom te betalen voordat jouw contract met Kikker Energie start. De hoogte van deze waarborgsom is afhankelijk van jouw energiecontract en jouw geschatte verbruik. Indien je de waarborgsom niet kan of niet wil betalen voordat je energiecontract start, is Kikker Energie gerechtigd om jouw contract niet te accepteren en de energielevering derhalve niet te starten. Als hier sprake van is, ontvang je hier altijd bericht van.</p>
+                            </div>
+                            <div class="d-flex ml-5">
+                                <p>a.</p>
+                                <p class="ml-3">Een jaar nadat de energielevering door Kikker Energie is gestart, wordt de waarborgsom met je verrekend op de jaarnota. Indien jouw energiecontract binnen een jaar stopt, wordt de waarborgsom op de eindnota met je verrekend. Dit gebeurt alleen als alle termijnbedragen door jou aan ons zijn betaald. Indien één of meerdere termijnbedragen nog niet zijn betaald, mag Kikker Energie de waarborgsom gebruiken om één of meerdere openstaande termijnbedragen te voldoen. Het eventuele resterende bedrag wordt vervolgens alsnog met je verrekend op de eind- of jaarnota. </p>
+                            </div>
+                            <div class="mb-3 d-flex ml-3">
+                                <p>2. </p>
+                                <p class="ml-3"> Afwijzing van het energiecontract. Kikker Energie kan ook direct besluiten om jouw energiecontract met Kikker Energie als gevolg van de kredietwaardigheidscontrole niet te accepteren. Als hier sprake van is, ontvang je hier altijd bericht van.</p>
+                            </div>
+
+                            <p class="font-weight-bold mb-2 title-description">3. Looptijd en opzegging</p>
+
+                            <p class="mb-2">Het contract wordt aangegaan voor de periode zoals overeengekomen in het energiecontract met Kikker Energie.</p>
+                            
+                            <p class="font-weight-bold mb-2 title-description">3.1. Start levering</p>
+                            <p class="mb-3">De levering start aansluitend op het moment dat je contract met je oude leverancier rechtsgeldig eindigt of op de datum die je ons als gewenste startdatum hebt opgegeven. Het moment waarop de levering start wordt met je overeengekomen. In de bevestigingsbrief wordt de overeengekomen startdatum bevestigd.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row footer my-4 ml-0 mr-0 text-small">
+                <div style="width: 25%;" class="text-left pr-3">
+                    <div class="text-logo">
+                        <img src="[reseller_logo]" class="[reseller_logo_none]">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page second">
+        <div class="container text-normal">
+            <div class="row header mt-2 pt-2 mr-0 ml-0">
+                <div style="width: 50%;">
+                    <div style="display: inline-block;vertical-align: top;width: 100%;text-align: left;" class="logo-image">
+                        <div class="wrap-logo">
+                            <img src="[reseller_logo]" class="[reseller_logo_none]">
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 50%;" class="text-small row mr-0 ml-0">
+                </div>
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-12 mt-5">
+                        <div class="mb-4">
+                            <p class="font-weight-bold mb-2 title-description">3.2. Bedenktijd</p>
+                            <p class="mb-3">Je hebt het recht om binnen een termijn van 14 dagen zonder opgave van redenen de overeenkomst te annuleren. De bedenktijd eindigt 14 dagen na ontvangst van je bevestigingsbrief.</p>
+
+                            <p class="mb-3">Om gebruik te maken van je recht op bedenktijd, kun je ons telefonisch bereiken via 020-2994200, per mail via <a href="mailto:servicedesk@kikker.nl">servicedesk@kikker.nl</a> of per post door het bijgevoegde ‘Modelformulier voor ontbinding/herroeping’ te versturen naar Kikker Energie B.V., tt. Vasumweg 122, 1033 SH Amsterdam.</p>
+
+                            <p class="mb-3">Om van de bedenktermijn gebruik te maken volstaat het om je mededeling betreffende je annulering te verzenden voordat de bedenktermijn eindigt.</p>
+                            <p class="link-elk">Leveringskosten na start levering indien je gebruik maakt van de bedenktermijn</p>
+                            <p>Wanneer je tijdens de bedenktermijn gebruik maakt van je wettelijk recht de overeenkomst te annuleren nadat de levering is begonnen, ben je voor het reeds geleverde een vergoeding verschuldigd op voorwaarde dat je:</p>
+                            <ul class="list-aan">
+                                <li>uitdrukkelijk, en, indien de overeenkomst buiten de verkoopruimte is gesloten, schriftelijk of op andere duurzame gegevensdrager, hebt verzocht om tijdens de bedenktijd met levering te beginnen; en</li>
+                                <li>bent geïnformeerd over het feit dat je de kosten voor levering moet betalen als je besluit gebruik te maken van je recht op bedenktijd.</li>
+                            </ul>
+
+                            <p class="font-weight-bold mb-2 title-description">3.3. Beëindiging contract</p>
+                            <ul class="list-aan">
+                                <li>Dit contract kunt je beëindigen door opzegging bij [reseller_name], Kikker Energie of via je nieuwe leverancier.</li>
+                                <li>Opzegging na de vaste looptijd is kosteloos. Bij een contract voor onbepaalde tijd kun je op ieder moment opzeggen.</li>
+                                <li>De opzegtermijn bedraagt een maand.</li>
+                                <li>Wanneer je de opzegging niet via je nieuwe leverancier laat doen, maar zelf wenst op te zeggen, dan kun je dit doen per e-mail door een e-mail te sturen naar [r_emailadres] of <a href="mailto:servicedesk@kikker.nl">servicedesk@kikker.nl</a> of per post door een opzeggingsbrief te versturen naar [reseller_name], [r_adres] of Kikker Energie B.V., tt. Vasumweg 122, 1033 SH Amsterdam.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row footer my-4 ml-0 mr-0 text-small">
+                <div style="width: 25%;" class="text-left pr-3">
+                    <div class="text-logo">
+                        <img src="[reseller_logo]" class="[reseller_logo_none]">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page second">
+        <div class="container text-normal">
+            <div class="row header mt-2 pt-2 mr-0 ml-0">
+                <div style="width: 50%;">
+                    <div style="display: inline-block;vertical-align: top;width: 100%;text-align: left;" class="logo-image">
+                        <div class="wrap-logo">
+                            <img src="[reseller_logo]" class="[reseller_logo_none]">
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 50%;" class="text-small row mr-0 ml-0">
+                </div>
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-12 mt-5">
+                        <div class="mb-4">
+                            <p class="font-weight-bold mb-2 title-description">3.4. Opzegboete</p>
+                            <p>Kikker Energie brengt in de volgende situaties een opzegboete in rekening:</p>
+                            <div class="d-flex ml-3">
+                                <p>1.</p>
+                                <p class="ml-3">Bij tussentijdse opzegging gedurende de vaste looptijd van het contract en</p>
+                            </div>
+                            <div class="d-flex ml-3">
+                                <p>2. </p>
+                                <p class="ml-3">Bij beëindiging van de energielevering door Kikker Energie als gevolg van wanbetaling. </p>
+                            </div>
+                            <p class="mb-3">Voor de hoogte van deze boete houden wij ons aan de richtlijnen van de Autoriteit Consument en Markt. Deze zijn vastgesteld op onderstaande bedragen per product (inclusief btw):</p>
+                            <div>
+                                <table class="table table-striped fix-table">
+                                    <thead>
+                                        <th class="pl-2 font-weight-bold">Resterende looptijd contract</th>
+                                        <th class="pr-2 font-weight-bold">Opzegboete</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="pl-2">Minder dan 1,5 jaar</td>
+                                            <td class="pr-2"><span class="cut-text">€ 50,00</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-2">1,5 tot 2 jaar</td>
+                                            <td class="pr-2"><span class="cut-text">€ 75,00</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-2">2 tot 2,5 jaar</td>
+                                            <td class="pr-2"><span class="cut-text">€ 100,00</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-2">Meer dan 2,5 jaar</td>
+                                            <td class="pr-2"><span class="cut-text">€ 125,00</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <p class="font-weight-bold mb-2 title-description">4. Privacy</p>
+
+                            <p class="mb-3">Kikker Energie verzoekt bij de aanvraag van een dienst of product om persoonsgegevens. Je gegevens gebruiken wij voor het accepteren van je aanvraag, het uitvoeren van de overeenkomst, en risicobeheer. Wij gebruiken je gegevens ook voor e-mailberichten ter promotie van producten of diensten van Kikker Energie. Dit doen wij alleen als wij je bij de aanvraag in de gelegenheid hebben gesteld aan te geven dat u geen prijs stelt op informatie over producten en diensten van Kikker Energie niet op prijs stelt, en je van deze gelegenheid geen gebruik hebt gemaakt. Wij zullen deze gegevens niet doorverkopen aan derden of e-mailberichten aan je versturen namens derden.</p>
+                            <p>Bij ieder bericht dat je van ons ontvangt zit een mogelijkheid om je af te melden. Dit kan via een afmeldlink in de mail of een verwijzing in het bericht naar een locatie op de website <a href="https://www.kikker.nl/">www.kikker.nl</a> waar je je kunt afmelden. Als je je hebt afgemeld zullen wij je niet meer benaderen met commerciële e-mailberichten.</p>
+
+                            <p class="font-weight-bold mb-2 title-description">5. Voorwaarden</p>
+                            <p>Op het contract zijn de volgende voorwaarden van toepassing:</p>
+                            <ul class="list-aan">
+                                <li>de geldende Algemene Voorwaarden voor de levering van elektriciteit en gas aan kleinverbruikers;</li>
+                                <li>deze Productvoorwaarden Kikker Energie Stroom en Gas; en</li>
+                                <li>onze Kwaliteitscriteria.</li>
+                            </ul>
+
+                            <p>In geval van tegenstrijdigheid tussen de Productvoorwaarden Kikker Energie Stroom en Gas en de Algemene Voorwaarden, geldt hetgeen is vermeld in de Productvoorwaarden Kikker Energie Stroom en Gas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row footer my-4 ml-0 mr-0 text-small">
+                <div style="width: 25%;" class="text-left pr-3">
+                    <div class="text-logo">
+                        <img src="[reseller_logo]" class="[reseller_logo_none]">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page second">
+        <div class="container text-normal">
+            <div class="row header mt-2 pt-2 mr-0 ml-0">
+                <div style="width: 50%;">
+                    <div style="display: inline-block;vertical-align: top;width: 100%;text-align: left;" class="logo-image">
+                        <div class="wrap-logo">
+                            <img src="[reseller_logo]" class="[reseller_logo_none]">
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 50%;" class="text-small row mr-0 ml-0">
+                </div>
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-12 mt-5">
+                        <div class="mb-4">
+                            <p class="font-weight-bold mb-3 title-description">Algemene Voorwaarden (Bijlage B1)</p>
+                            <a target="_blank" href="https://kikker.nl/intro/algemene_voorwaarden">https://kikker.nl/intro/algemene_voorwaarden</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row footer my-4 ml-0 mr-0 text-small">
+                <div style="width: 25%;" class="text-left pr-3">
+                    <div class="text-logo">
+                        <img src="[reseller_logo]" class="[reseller_logo_none]">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page second">
+        <div class="container text-normal">
+            <div class="row header mt-2 pt-2 mr-0 ml-0">
+                <div style="width: 50%;">
+                    <div style="display: inline-block;vertical-align: top;width: 100%;text-align: left;" class="logo-image">
+                        <div class="wrap-logo">
+                            <img src="[reseller_logo]" class="[reseller_logo_none]">
+                            <!-- <p class="[reseller_name_none]">[reseller_name]</p> -->
+                        </div>
+                    </div>
+                    <!-- <div class="name-reseller">
+                        <p>[supplier_name]</p>
+                        <p>MEDIAMARKET</p>
+                    </div> -->
+                </div>
+                <div style="width: 50%;" class="text-small row mr-0 ml-0">
+                </div>
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-12 mt-5">
+                        <div class="mb-4">
+                            <p class="font-weight-bold mb-3 title-description">Kwaliteitscriteria (Bijlage B2)</p>
+                            <p class="mb-3">Klanten zijn onmisbaar voor Kikker Energie en wij geloven in lokale betrokkenheid. Wij vinden het belangrijk dat je tevreden bent over onze service en producten. Daarom werken wij samen met onze wederverkopers voortdurend aan de kwaliteit van onze dienstverlening en de klantvriendelijkheid. Deze kwaliteitscriteria gelden ook voor onze wederverkopers.</p>
+                            <p class="font-weight-bold title-description">Facturatie</p>
+                            <p class="mb-3">Voor de levering van stroom en gas betaal je maandelijks een voorschot, het termijnbedrag. Je dient ervoor te zorgen dat het termijnbedrag in lijn is met jouw energieverbruik. Als dit naar mening van Kikker Energie niet zo is, dan is Kikker Energie gerechtigd om het termijnbedrag voor je aan te passen.</p>
+                            <p class="mb-3">Eens per jaar ontvang je een jaarnota: een duidelijk en compleet overzicht van alle kosten voor de aan jou geleverde producten en diensten. Het kan zijn dat je termijnbedrag nul of negatief is. In dat geval betalen we dit bedrag niet iedere maand uit, maar incasseren we een termijnbedrag van € 10 per maand. Het verschil wordt dan verrekend op je jaarnota. Indien je verhuist of overstapt naar een andere energieleverancier, ontvangt je, nadat de meterstanden bij Kikker Energie binnen zijn, een eindnota. Zowel de jaarnota als de eindnota ontvang je zo snel mogelijk, uiterlijk binnen zes weken nadat de meterstanden zijn opgenomen.</p>
+                        
+                            <p class="font-weight-bold title-description">Betaling</p>
+                            <p class="mb-3">Betaling van de facturen kan plaatsvinden via automatische incasso of handmatige overboeking. Indien je gekozen hebt voor automatische incasso zal het termijnbedrag iedere maand rond de 15e aan je gefactureerd worden. Indien je gekozen hebt voor betaling door handmatige overboeking, brengt Kikker Energie voor de verwerking daarvan € 0,25 per overboeking in rekening. De betaaltermijn bij handmatige overboeking is steeds 14 dagen na de factuurdatum.</p>
+
+                            <p class="font-weight-bold title-description">Vragen, verzoeken en/of klachten</p>
+                            <p class="mb-3">Mocht je naar aanleiding van onze dienstverlening vragen, verzoeken en/of klachten hebben, neem dan contact met [reseller_name] of ons op via e-mail, telefoon of post.</p>
+
+                            <p class="mb-3">[reseller_name] is op werkdagen telefonisch bereikbaar van 09:00 tot 17:00 uur op [r_telefoonnummer] en via e-mail op [r_emailadres]. Je brief kun je sturen naar [reseller_name], [r_adres].</p>
+
+                            <p class="mb-3">Wijzelf zijn op werkdagen telefonisch bereikbaar van 09:00 tot 17:00 uur op 020-2994200 en via e-mail op <a href="mailto:servicedesk@kikker.nl">servicedesk@kikker.nl</a>. Je brief kun je sturen naar Kikker Energie B.V., tt. Vasumweg 122, 1033 SH Amsterdam.</p>
+
+                            <p class="mb-3">Wij streven ernaar je vraag of verzoek via e-mail, telefoon of post binnen 2 werkdagen te beantwoorden. Eventuele klachten vragen vaak om een (meer) inhoudelijke reactie, daarom hebben wij meer tijd nodig om daarop te reageren. Op eventuele klachten reageren wij in ieder geval binnen 10 werkdagen. Mochten wij zowel in het geval van een vraag of verzoek als in het geval van een klacht niet binnen de aangegeven termijn kunnen reageren, dan laten wij je dit altijd weten.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row footer my-4 ml-0 mr-0 text-small">
+                <div style="width: 25%;" class="text-left pr-3">
+                    <div class="text-logo">
+                        <img src="[reseller_logo]" class="[reseller_logo_none]">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page second">
+        <div class="container text-normal">
+            <div class="row header mt-2 pt-2 mr-0 ml-0">
+                <div style="width: 50%;">
+                    <div style="display: inline-block;vertical-align: top;width: 100%;text-align: left;" class="logo-image">
+                        <div class="wrap-logo">
+                            <img src="[reseller_logo]" class="[reseller_logo_none]">
+                            <!-- <p class="[reseller_name_none]">[reseller_name]</p> -->
+                        </div>
+                    </div>
+                    <!-- <div class="name-reseller">
+                        <p>[supplier_name]</p>
+                        <p>MEDIAMARKET</p>
+                    </div> -->
+                </div>
+                <div style="width: 50%;" class="text-small row mr-0 ml-0">
+                </div>
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-12 mt-5">
+                        <div class="mb-4">
+                            <p class="font-weight-bold mb-3 title-description">Geschillen</p>
+                            <p class="mb-3">Indien je ontevreden bent met de wijze waarop Kikker Energie je klacht heeft behandeld, kun je een externe, onafhankelijke geschillencommissie inschakelen. Kikker Energie is via de overkoepelende organisatie Energie Nederland aangesloten bij De Geschillencommissie Energie. De Geschillencommissie Energie doet een voor beide partijen bindende uitspraak. Over de onafhankelijke geschillencommissies vind je meer informatie op <a href="https://www.degeschillencommissie.nl/">https://www.degeschillencommissie.nl/</a>. Inlichtingen zijn ook te verkrijgen via het telefoonnummer 070-3105310.</p>
+
+                            <p class="font-weight-bold title-description">Gedragscodes</p>
+                            <p class="mb-3">Kikker Energie is aangesloten bij een tweetal gedragscodes, namelijk de Gedragscode Consument en Energieleverancier 2015 en de Gedragscode Leveranciers Slimme Meters 2012. Via de website <a href="https://www.energie-nederland.nl/">https://www.energie-nederland.nl/</a> kunt u beide gedragscodes inzien en downloaden.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row footer my-4 ml-0 mr-0 text-small">
+                <div style="width: 25%;" class="text-left pr-3">
+                    <div class="text-logo">
+                        <img src="[reseller_logo]" class="[reseller_logo_none]">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page second">
+        <div class="container text-normal">
+            <div class="row header mt-2 pt-2 mr-0 ml-0">
+                <div style="width: 50%;">
+                    <div style="display: inline-block;vertical-align: top;width: 100%;text-align: left;" class="logo-image">
+                        <div class="wrap-logo">
+                            <img src="[reseller_logo]" class="[reseller_logo_none]">
+                            <!-- <p class="[reseller_name_none]">[reseller_name]</p> -->
+                        </div>
+                    </div>
+                    <!-- <div class="name-reseller">
+                        <p>[supplier_name]</p>
+                        <p>MEDIAMARKET</p>
+                    </div> -->
+                </div>
+                <div style="width: 50%;" class="text-small row mr-0 ml-0">
+                </div>
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-12 mt-5">
+                        <div class="mb-4">
+                            <p class="font-weight-bold mb-3 title-description">Modelformulier voor ontbinding / herroeping (Bijlage C)</p>
+                            <p class="mb-3">Dit formulier alleen invullen en terugzenden als je de overeenkomst wilt ontbinden/herroepen.</p>
+
+                            <p class="font-weight-bold title-description">Aan</p>
+                            <p class="mb-3">Kikker Energie B.V.
+                                <br>
+                                tt. Vasumweg 122
+                                <br>
+                                1033 SH Amsterdam
+                            </p>
+                            <p class="mb-3">Ik/Wij(*) deel/delen u hierbij mede dat ik/wij(*) onze overeenkomst betreffende de verkoop van de volgende goederen/levering(*) van de volgende dienst herroep/herroepen(*)</p>
+                            
+                            <p class="font-weight-bold mb-5 title-description">Besteld op(*)/Ontvangen op(*):</p>
+                            <div class="bolder-top-light mb-3"></div>
+
+                            <p class="font-weight-bold mb-5 title-description">Naam/Namen consument(en):</p>
+                            <div class="bolder-top-light mb-3"></div>
+                            <br>
+
+                            <p class="mb-4 title-description">Adres consument(en):</p>
+                            <div class="bolder-top-light mt-5 mb-4"></div>
+                            <br>
+                            <div class="bolder-top-light mb-4"></div>
+                            <br>
+                            <div class="bolder-top-light mb-5"></div>
+
+                            <p class="mb-5">Naam/Namen consument(en):</p>
+                            <div class="bolder-top-light mb-4"></div>
+                            <br>
+                            <p class="mb-5">Datum:</p>
+                            <div class="bolder-top-light mb-5"></div>
+
+                            <p class="">(*) Doorhalen wat niet van toepassing is.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row footer my-4 ml-0 mr-0 text-small">
+                <div style="width: 25%;" class="text-left pr-3">
+                    <div class="text-logo">
+                        <img src="[reseller_logo]" class="[reseller_logo_none]">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -27,4 +27,16 @@ export class PdfRsService {
   deletePdf(pdf: PdfTemplate) {
     return this.http.delete(this.baseUrl + '/delete/' + pdf.id);
   }
+
+  copyToOtherResseller(pdf: PdfTemplate) {
+    return this.http.post(this.baseUrl + '/copy-to-other-reseller', pdf);
+  }
+
+  copyToDemo(pdf: PdfTemplate) {
+    return this.http.post(this.baseUrl + '/copy-to-demo', pdf);
+  }
+
+  getById(id: number) {
+    return this.http.get(this.baseUrl + `/${id}`);
+  }
 }

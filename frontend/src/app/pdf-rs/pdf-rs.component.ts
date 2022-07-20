@@ -18,10 +18,8 @@ export class PdfRsComponent implements OnInit {
   form = new FormGroup({
     id: new FormControl(undefined),
     template_name: new FormControl(undefined),
-    lang_key: new FormControl(undefined),
-    template_en: new FormControl(undefined),
-    template_nl: new FormControl(undefined),
-    create_date: new FormControl(new Date()),
+    reseller_id: new FormControl(undefined),
+    created_date: new FormControl(new Date()),
   });
   selectedPdf?: PdfTemplate;
   htmlPdfData?: SafeHtml;
@@ -53,20 +51,22 @@ export class PdfRsComponent implements OnInit {
   }
   createPDF() {
     this.pdfService.createPdf(this.form.value).subscribe((res: any) => {
-      this.loadPDFs();
+      this.loadPdfBy();
       this.form.reset();
     })
   }
 
   selectPdf(pdf: PdfTemplate) {
-    this.selectedPdf = cloneDeep(pdf);
-    this.htmlPdfData = this.sanitizer.bypassSecurityTrustHtml(this.selectedPdf?.template_nl);          
+    this.pdfService.getById(pdf.id).subscribe(pdf => {
+      this.selectedPdf = pdf as PdfTemplate;
+      this.htmlPdfData = this.sanitizer.bypassSecurityTrustHtml(this.selectedPdf?.template_nl);   
+    })
   }
   save() {
     this.pdfService.updatePdf(this.selectedPdf).subscribe((res: any) => {
       this.selectedPdf = undefined;
       this.reviewPdf = false;
-      this.loadPDFs();
+      this.loadPdfBy();
     })
   }
 
@@ -80,19 +80,24 @@ export class PdfRsComponent implements OnInit {
   }
 
   copyToDemo(pdf: PdfTemplate) {
-
+    this.pdfService.copyToDemo(pdf).subscribe((res: any) => {
+      this.loadPdfBy();
+    })
   }
 
   reviewPdfPopup(pdf: PdfTemplate) {
-    const dialogRef = this.dialog.open(HtmlReviewComponent, {
-      data: {
-        template: pdf.template_nl
-      },
-      panelClass: "contract-image-popup"
+    this.pdfService.getById(pdf.id).subscribe(res => {
+      const dialogRef = this.dialog.open(HtmlReviewComponent, {
+        data: {
+          template: (res as PdfTemplate).template_nl
+        },
+        panelClass: "contract-image-popup"
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log(`Dialog result: ${result}`);
+      });  
     });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+   
   }
   loadPdfBy() {
     if(!this.resellerId && !this.pdfName) {
@@ -102,5 +107,17 @@ export class PdfRsComponent implements OnInit {
     this.pdfService.getAllPdfs(this.resellerId, this.pdfName).subscribe((res: any) => {
       this.pdfs = res;
     })
+  }
+
+  copyToOtherReserller(pdf: PdfTemplate) {
+    this.pdfService.copyToOtherResseller(pdf).subscribe((res: any) => {
+      this.loadPdfBy();
+    })
+  }
+
+  keyupLoad(event: KeyboardEvent) {
+    if(event.key === 'Enter') {
+      this.loadPdfBy();
+    }
   }
 }

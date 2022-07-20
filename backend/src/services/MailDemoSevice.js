@@ -16,6 +16,13 @@ const update = async (template) => {
 const getById = async (id) => {
     return await CommonService.getById(mail_template, id);
 }
+const getByMailName = async (mail_name) => {
+    return await mail_template.findOne({
+        where: {
+            mail_name
+        }
+    })
+}
 
 const createOrUpdate = async (mail) => {
     return new Promise(async (resolve, reject) => {
@@ -46,5 +53,6 @@ module.exports = {
     update,
     getById,
     getAll,
-    createOrUpdate
+    createOrUpdate,
+    getByMailName
 };

@@ -53,8 +53,10 @@ export class MailRsComponent implements OnInit {
   }
 
   selectMail(mail: MailRsTemplate) {
-    this.selectedMail = mail;
-    this.htmlData = this.sanitizer.bypassSecurityTrustHtml(this.selectedMail.mail_template_nl || '');          
+    this.mailRsService.getById(mail.id).subscribe(res => {
+      this.selectedMail = res as MailRsTemplate;
+      this.htmlData = this.sanitizer.bypassSecurityTrustHtml(this.selectedMail?.mail_template_nl || '');         
+    })
   }
 
   createEmail() {
@@ -86,19 +88,22 @@ export class MailRsComponent implements OnInit {
   }
 
   reviewMailPopup(email: MailTemplate) {
-    const dialogRef = this.dialog.open(HtmlReviewComponent, {
-      data: {
-        template: email.mail_template_nl
-      },
-      panelClass: "contract-image-popup"
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    this.mailRsService.getById(email.id).subscribe(res => {
+      const dialogRef = this.dialog.open(HtmlReviewComponent, {
+        data: {
+          template: (res as MailRsTemplate).mail_template_nl
+        },
+        panelClass: "contract-image-popup"
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log(`Dialog result: ${result}`);
+      });       
+    })
+   
   }
 
-  copyToDemo(email: MailTemplate) {
-   
+  copyToDemo(email: MailRsTemplate) {
+    this.mailRsService.copyToDemo(email).subscribe((res: any) => {})
   }
   loadEmailBy() {
     if(!this.resellerId && !this.mailName) {
@@ -116,5 +121,8 @@ export class MailRsComponent implements OnInit {
         this.snackBarService.success('Delete success')
       })
     }
+  }
+  copyToOtherReseller(email: MailRsTemplate) {
+    this.mailRsService.copyToOtherReseller(email).subscribe((res: any) => {})
   }
 }

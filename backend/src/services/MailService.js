@@ -38,11 +38,24 @@ const copyToWhiteRs = async (mail_name, reseller_id) => {
     return result;
 }
 
+const restoreFromDemo = async (mail_name) => {
+    const mailDemo = await MailDemoSevice.getByMailName(mail_name);
+    if (mailDemo) {
+        const mail = mailDemo.get({ plain: true });
+        delete mail.id;
+        await mail_template.update(mail, {where: {
+            mail_name: mail.mail_name
+        }})
+        return mail;
+    }
+}
+
 module.exports = {
     create,
     update,
     getById,
     getAll,
     copyToDemo,
-    copyToWhiteRs
+    copyToWhiteRs,
+    restoreFromDemo
 };

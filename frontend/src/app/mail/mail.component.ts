@@ -49,8 +49,10 @@ export class MailComponent implements OnInit {
   }
 
   selectMail(mail: MailTemplate) {
-    this.selectedMail = mail;
-    this.htmlData = this.sanitizer.bypassSecurityTrustHtml(this.selectedMail.mail_template_nl);          
+    this.mailService.getById(mail.id).subscribe(res => {
+      this.selectedMail = res as MailTemplate;
+      this.htmlData = this.sanitizer.bypassSecurityTrustHtml(this.selectedMail?.mail_template_nl);          
+    })
   }
 
   createEmail() {
@@ -82,15 +84,17 @@ export class MailComponent implements OnInit {
   }
 
   reviewMailPopup(email: MailTemplate) {
-    const dialogRef = this.dialog.open(HtmlReviewComponent, {
-      data: {
-        template: email.mail_template_nl
-      },
-      panelClass: "contract-image-popup"
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    this.mailService.getById(email.id).subscribe(res => {
+      const dialogRef = this.dialog.open(HtmlReviewComponent, {
+        data: {
+          template: (res as MailTemplate)?.mail_template_nl
+        },
+        panelClass: "contract-image-popup"
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log(`Dialog result: ${result}`);
+      });
+    })
   }
 
   copyToDemo(email: MailTemplate) {
@@ -99,10 +103,17 @@ export class MailComponent implements OnInit {
     })
   }
   copyToWhiteRs(email: MailTemplate) {
-    this.mailService.copyToWhiteRs(email, this.defaultResellerId).subscribe((res: any) => {
-      console.log(res);
+    this.mailService.restoreFromDemo(email).subscribe((res: any) => {
+      if(res) {
+        this.snackBarService.success('Restore mail success')
+      } else {
+        this.snackBarService.fail('Not found this mail templte on Demo')
+      }
     }, () => {
-      this.snackBarService.fail('Email exist for reseller 197')
+      this.snackBarService.fail('Restore mail fail')
     })
+  }
+  restoreFromDemo(email: MailTemplate) {
+
   }
 }

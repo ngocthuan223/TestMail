@@ -1,0 +1,116 @@
+<table class="table table-custom mb-0">
+    <thead class="[tax_item_by_ean_header_visible] header-line">
+        <th class="pl-2">ENERGIEBELASTING OP LEVERING VAN [product_type]</th>
+        <th class="pl-2 text-center"></th>
+        <th class="pl-2 text-right"><span class="float-left">TARIEF</th>
+        <th class="pl-2 text-right">BEDRAG</th>
+    </thead>
+    <thead class="[tax_item_by_ean_header_visible]">
+        <th class="pl-2">([start_date] / [end_date])<span class="[multil_ean_number_visible]"> EAN
+                [multil_ean_number]</span> | [tax_btw]% VAT</th>
+        <th class="pl-2 text-center"><span class="float-left">AANTAL</span><span>x</span></th>
+        <th class="pl-2 text-right"><span class="float-left">EXCL. BTW</span><span class="d-inline-block pr-2">=</span>
+        </th>
+        <th class="pl-2 text-right">EXCL. BTW</th>
+    </thead>
+    <tbody>
+        [tax_item_by_ean_energy]
+        [tax_item_by_ean_storage]
+        <tr class="[tax_item_by_ean_reduction_visible]">
+            <td class="pl-2">
+                Vermindering energiebelasting
+            </td>
+            <td class="pl-2">[tax_item_by_ean_reduction_usage] jaar</td>
+            <td class="pl-2">- € [tax_item_by_ean_reduction_tariff]</td>
+            <td class="pl-2 text-right">- € [tax_item_by_ean_reduction_amount]</td>
+        </tr>
+        <tr class="background-none [tax_item_by_ean_total_visible]">
+            <td class="pl-2"></td>
+            <td class="pl-2"></td>
+            <td class="pl-2"></td>
+            <td class="pl-2 font-weight-bold text-right">[tax_item_total]</td>
+        </tr>
+    </tbody>
+</table>
+
+
+dynamic page
+<div class="page">
+    <div class="container text-normal">
+        <div class="content avoid-break-page">
+            <div class="mt-0 custom-table">
+                [tax_item]
+            </div>
+
+            <div class="mt-3 [tax_item_first_page_visible]">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td class="w-100"></td>
+                            <td class="pl-2 text-right text-nowrap t-nowrap">
+                                <table>
+                                    <tr>
+                                        <td class="text-right text-nowrap pr-5">Subtotaal</td>
+                                        <td>[tax_sub_total]</td>
+                                    </tr>
+                                    <tr class="text-tax-color [hide_tax_vat_1]">
+                                        <td class="text-right text-nowrap pr-5">btw [tax_btw_1]% over [tax_net_month_1]
+                                        </td>
+                                        <td>[tax_btw_amount_1]</td>
+                                    </tr>
+                                    <tr class="text-tax-color [hide_tax_vat_2]">
+                                        <td class="text-right text-nowrap pr-5 pb-2">btw [tax_btw_2]% over
+                                            [tax_net_month_2]</td>
+                                        <td class="pb-2">[tax_btw_amount_2]</td>
+                                    </tr>
+                                    <tr class="border-top-bold-td font-weight-bold">
+                                        <td class="pt-2 pr-5">Totaalbedrag voor overheidsheffingen op [product_type]
+                                        </td>
+                                        <td class="pt-2">[tax_item_total]</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="page-break-before: always">&nbsp;</div>
+
+
+
+
+dynamic total
+<tr>
+    <table>
+        <tbody>
+            <tr>
+                <td class="w-100"></td>
+                <td class="pl-2 text-right text-nowrap t-nowrap">
+                    <table>
+                        <tr>
+                            <td class="text-right text-nowrap pr-5">Subtotaal</td>
+                            <td>[tax_sub_total]</td>
+                        </tr>
+                        <tr class="text-tax-color [hide_tax_vat_1]">
+                            <td class="text-right text-nowrap pr-5">btw [tax_btw_1]% over [tax_net_month_1]</td>
+                            <td>[tax_btw_amount_1]</td>
+                        </tr>
+                        <tr class="text-tax-color [hide_tax_vat_2]">
+                            <td class="text-right text-nowrap pr-5 pb-2">btw [tax_btw_2]% over [tax_net_month_2]
+                            </td>
+                            <td class="pb-2">[tax_btw_amount_2]</td>
+                        </tr>
+                        <tr class="border-top-bold-td font-weight-bold">
+                            <td class="pt-2 pr-5">Totaalbedrag voor overheidsheffingen op [product_type]</td>
+                            <td class="pt-2">[tax_item_total]</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>  
+</tr>

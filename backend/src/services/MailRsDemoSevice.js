@@ -5,30 +5,32 @@ const createOrUpdate = async (mail) => {
         const mailEdit = await mail_template_rs.findOne({
             where: {
                 mail_name: mail?.mail_name,
-                reseller_id: mail?.reseller_id
             }, raw: true});
-        mail_template_rs.create(
-            mailEdit ? 
-                {...mail, id: mailEdit.id} :
-                {...mail, id: undefined},
-            {
-                updateOnDuplicate: [
-                    'mail_name',
-                    'lang_key',
-                    'subject',
-                    'subject_nl',
-                    'mail_template_en',
-                    'mail_template_nl',
-                    'footer',
-                    'footer_nl',
-                ]
-            }
-        ).then(async (result) => {
-            return resolve(result);
-        }, (e) => {
-            console.log(e);
-            reject({ error: "Internal Error" });
-        });
+
+        if(mailEdit) {
+            delete mail.reseller_id;
+            delete mail.id;
+            mail_template_rs.update(
+                mail,
+                {
+                    where: {
+                        mail_name: mail?.mail_name
+                    }
+                }).then(async (result) => {
+                    return resolve(result);
+                }, (e) => {
+                    reject({ error: "Internal Error" });
+                });
+        } else {
+            mail_template_rs.create(
+                {...mail, id: undefined}
+            ).then(async (result) => {
+                return resolve(result);
+            }, (e) => {
+                console.log(e);
+                reject({ error: "Internal Error" });
+            });
+        }
     });
 }
 

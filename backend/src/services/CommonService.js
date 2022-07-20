@@ -1,12 +1,6 @@
 const create = async (model, modelItem) => {
-    return new Promise((resolve, reject) => {
-        model.create(modelItem).then(async (result) => {
-            return resolve(result);
-        }, (e) => {
-            console.log(e);
-            reject({ error: "Internal Error" });
-        });
-    });
+    const result = await model.create(modelItem);
+    return result;
 }
 
 const importList = async (model, modelItems) => {
@@ -73,11 +67,42 @@ const deleteById = async (model, id) => {
     });
 }
 
+const createOrUpdate = async (model, item, idProperty = 'id', updateAttributes = []) => {
+    if(!item[idProperty]) {
+        throw new Error(idProperty + ' is required');
+    }
+    const itemEdit = await model.findOne({where: {[idProperty]: item[idProperty]}, raw: true});
+    delete item.id;
+
+    // If there is a row in target table update it else create new one
+    const result = await model.create(itemEdit ? {...item, id: itemEdit.id} : item, {
+        updateOnDuplicate: updateAttributes
+    });
+    return result;
+} 
+
+const bulkUpdate = async (model, item, idProperty = 'id') => {
+    if(!item[idProperty]) {
+        throw new Error(idProperty + ' is required');
+    }
+    const result = await model.update(
+        item,
+        {
+            where: {
+                [idProperty]: item[idProperty]
+            }
+        }
+    )
+    return result;
+} 
+
 module.exports = {
     create,
     update,
     getAll,
     getById,
     deleteById,
-    importList
+    importList,
+    createOrUpdate,
+    bulkUpdate
 };

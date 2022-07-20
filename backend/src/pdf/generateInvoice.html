@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Billing | Kikker</title>
+    <meta charset="utf-8">
+    <link rel="icon" href="asset/kikker-icon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://storage.googleapis.com/kikkerprodbucket/static-files/pdf-css/site.css">
+</head>
+
+<style>
+    /* Font css */
+    @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800,900&display=swap');
+
+    body {
+        background-color: #ffff;
+        font-family: DIN;
+        font-size: 26px;
+    }
+
+    .text-bold {
+        font-weight: bold;
+    }
+
+    .text-small {
+        font-size: 13px !important;
+    }
+
+    .text-normal {
+        font-size: 16px !important;
+    }
+
+    .table-header {
+        margin-bottom: 0px !important;
+        border-bottom: 2px solid black !important;
+    }
+
+    .table-striped-even tbody tr:nth-of-type(even) {
+        background-color: rgba(0, 0, 0, .05);
+    }
+
+    .bolder-top {
+        border-top: 2px solid black !important;
+    }
+
+    .bolder-top-light {
+        border-top: 1px solid black !important;
+    }
+
+    .logo {
+        font-size: 20px !important;
+    }
+
+    .logo-image .wrap-logo img {
+        max-height: 100%;
+        border-radius: 0;
+        object-fit: cover;
+        border: none;
+        background: #fff;
+        max-width: 100%;
+    }
+
+    .wrap-logo {
+        height: 3cm;
+        border-radius: 0;
+        border: none;
+        background: #fff;
+        max-width: 50%;
+    }
+
+    .logo-image p {
+        font-size: 35px;
+        margin: 0;
+        line-height: 82px;
+        width: 0.99in;
+        height: 0.86in;
+        text-align: center;
+        background-color: rgb(0, 146, 153);
+        color: #fff;
+        margin-right: auto;
+    }
+
+    .name-reseller {
+        position: relative;
+        padding-left: 15px;
+        display: inline-block;
+        display: none;
+    }
+
+    .name-reseller p {
+        margin: 0;
+    }
+
+    .name-reseller p:first-child {
+        font-weight: bold;
+        font-size: 32px !important;
+        color: #000;
+        padding-top: 8px;
+        line-height: 42px;
+    }
+
+    .name-reseller p:last-child {
+        font-size: 26px !important;
+        color: #3AA3AA;
+        line-height: 42px;
+        padding-bottom: 8px
+    }
+
+    .name-reseller:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        height: 100%;
+        width: 2px;
+        background: #BFBFBF;
+        top: 0;
+    }
+
+    #first .container,
+    .second .container,
+    #third .container {
+        position: relative;
+        max-width: 100% !important;
+    }
+
+    #first .container {
+        height: 35.2cm;
+    }
+
+    .second .container {
+        height: 35.2cm;
+    }
+
+    #third .container {
+        height: 34cm;
+    }
+
+    #first .container .row.footer,
+    .second .container .row.footer,
+    #third .container .row.footer {
+        position: absolute;
+        width: 100%;
+        bottom: 1px;
+    }
+
+    .pdl-pdr-0 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    table th {
+        font-weight: 400;
+    }
+
+    .table td,
+    .table th {
+        padding: 0.3rem;
+    }
+
+    .green-tr {
+        background: #24441F;
+        color: #fff;
+    }
+
+    .report {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        background: #24441F;
+        color: #fff;
+        padding: 12px;
+        font-size: 11px;
+        bottom: -20px;
+        margin-bottom: 0;
+    }
+
+    .table-grey tr {
+        background-color: rgba(0, 0, 0, .05);
+    }
+
+    .text-logo {
+        color: #24441F;
+        font-size: 40px;
+        font-weight: 900;
+        position: relative;
+        line-height: 100%;
+        font-family: 'Montserrat';
+    }
+
+    .text-logo img {
+        height: auto;
+        max-height: 75px;
+        border-radius: 0;
+        object-fit: contain;
+        border: none;
+        background: #fff;
+        width: auto;
+        max-width: 100%;
+    }
+
+    .text-logo span {
+        font-weight: 500;
+        position: absolute;
+        bottom: -8px;
+        left: 85px;
+        line-height: 100%;
+    }
+
+    .table thead th {
+        border-top: 0;
+    }
+
+    .fix-table thead th:last-child {
+        min-width: 250px;
+    }
+
+    /* .table td {
+    color: #212529;
+    border-top: 0;
+    min-width: 381px;
+} */
+    .green-tr td {
+        color: #fff;
+    }
+
+    .table thead th {
+        border-bottom: 1px solid #000;
+    }
+
+    .table thead th:first-child {
+        /* color: #6d6d6d; */
+        min-width: 250px;
+    }
+
+    .text-black td {
+        color: #000;
+    }
+
+    /* .total-tr div:first-child {
+        width: 482px;
+    }
+.total-tr div:not(:first-child) {
+    width: calc(50% - 241px);
+    padding-left: 8px;
+    font-weight: bold;
+    display: inline-block;
+} */
+    .total-tr {
+        padding-left: 12.12cm;
+    }
+
+    .total-tr div {
+        font-weight: bold;
+    }
+
+    .total-tr div:first-child {
+        width: 4.18cm;
+    }
+
+    .total-tr div:last-child {
+        width: 3.44cm;
+    }
+
+    .second .table-6-col tr td:first-child {
+        width: 250px;
+    }
+
+    .tr-total {
+        background: #fff !important;
+        border-top: 1px solid #000;
+    }
+
+    .tr-sustainable-tax2 td {
+        padding-bottom: 30px;
+    }
+
+    .table-13 .cut-text {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        max-width: 120px;
+        display: inline-block;
+    }
+
+    .table-4 .cut-text {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        max-width: 50px;
+        display: inline-block;
+    }
+
+    .list-aan {
+        padding-left: 17px;
+    }
+
+    .list-aan li {
+        list-style-type: square;
+        padding-left: 10px;
+    }
+
+    .title-description {
+        font-size: 18px;
+    }
+
+    .content-contract>p {
+        display: flex;
+        width: 100%;
+        text-align: left;
+    }
+
+    .content-contract>p span:last-child {
+        /* float: right; */
+        width: calc(100% - 160px);
+        min-width: calc(100% - 160px);
+        max-width: calc(100% - 160px);
+        text-align: left;
+        display: inline-block;
+    }
+
+    .content-contract>p span:first-child {
+        min-width: 160px;
+        max-width: 160px;
+        width: 160px;
+        display: inline-block;
+    }
+
+    .link-elk {
+        color: #212529;
+        text-decoration: underline
+    }
+
+    .link-elk:hover {
+        color: #212529;
+    }
+
+    a {
+        text-decoration: underline;
+    }
+
+    .space-span {
+        padding-top: 50px;
+    }
+
+    .space-span>span {
+        width: 150px;
+    }
+
+    .table td:not(:first-child) {
+        border-left: 1px solid #fff;
+    }
+
+    .table tr:nth-last-of-type(3) td {
+        border-top: 1px solid #000;
+        border-left: none;
+    }
+
+    .table tr:last-child td {
+        border-top: 0;
+    }
+
+    .table tr:last-child td:nth-last-of-type(1),
+    .table tr:last-child td:nth-last-of-type(2) {
+        border-top: 1px solid #000;
+        border-left: none;
+    }
+
+    .table tr:nth-child(2) {
+        color: #717171;
+    }
+
+    .table td {
+        line-height: 32px;
+    }
+</style>
+
+<body>
+    <div class="page" id="first">
+        <div class="container text-normal">
+            <div class="row header mt-2 pt-2 mr-0 ml-0">
+                <div style="width: 60%;">
+                    <div style="display: inline-block;vertical-align: top;width: 100%;text-align: left;"
+                        class="logo-image">
+                        <div class="wrap-logo">
+                            <img src="[reseller_logo]">
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 40%;" class="mr-0 ml-0">
+                    <p>[company_name]<br>[contact_person]<br>[street] [house_number] [extention]<br>[zipcode] [place]
+                    </p>
+                    <p class="space-span">
+                        <span class="d-inline-block">Factuur:</span> [invoice_number]<br>
+                        <span class="d-inline-block">Factuurdatum:</span> [date_of_today]<br>
+                        <span class="d-inline-block">Vervaldatum:</span> [expiration_date]<br>
+                        <span class="d-inline-block">Contractnummer:</span> [contract_number]<br>
+                        <span class="d-inline-block">Reseller:</span> [reseller_name]<br>
+                    </p>
+                </div>
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-12">
+                        <p class="font-weight-bold">Termijnfactuur [number_of_invoice] levering Kikker Energie</p>
+                        <br>
+                        <p>Beste [customer_first_name],</p>
+                        <br>
+                        <p class="mb-2">Hierbij ontvang je termijnfactuur [number_of_invoice] voor de periode van
+                            [period_from_text] tot [period_to_text].</p>
+                        <br>
+                        <div>
+                            <table class="table table-striped">
+                                <thead>
+                                    <th class="pl-2 font-weight-bold"></th>
+                                    <th class="pl-2 font-weight-bold">Termijn</th>
+                                    <th class="pl-2 font-weight-bold">Periode</th>
+                                    <th class="pl-2 font-weight-bold">Bedrag</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="pl-2" style="color: #5d5d5d;">
+                                            Levering Kikker Energie<br>
+
+                                        </td>
+                                        <td class="pl-2">[number_of_invoice]</td>
+                                        <td class="pl-2">[period_from] tot [period_to]</td>
+                                        <td class="pl-2 text-right">[invoice_amount]</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pl-3">[delivery_address]<br>
+                                            <div class="pl-3">
+                                                [ean_number]
+                                            </div>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr></tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="pl-2 pt-3 pr-4 text-right">
+                                            Totaalbedrag excl. btw<br>
+                                            <span class="[hide_vat_1]">btw [amount_btw_1]% over [net_month_1]</span><br
+                                                class="[hide_vat_1]">
+                                            <span class="[hide_vat_2]">btw [amount_btw_2]% over [net_month_2]</span>
+                                        </td>
+                                        <td class="pl-2 pt-3 text-right">
+                                            [invoice_amount_excl]<br>
+                                            <span class="[hide_vat_1]">[vat_amount_1]</span><br class="[hide_vat_1]">
+                                            <span class="[hide_vat_2]">[vat_amount_2]</span>
+                                        </td>
+                                    </tr>
+                                    <tr></tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="pl-2 pt-3 pr-4 text-right font-weight-bold">
+                                            Totaal
+                                        </td>
+                                        <td class="pl-2 pt-3 text-right font-weight-bold">
+                                            [invoice_amount]
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <br>
+                        <p class="mb-0">Dit termijnbedrag is gebaseerd op jouw ingeschatte jaarverbruik en bestaat uit
+                            netwerkkosten, verbruikskosten en overheidsheffingen. Wil je weten of jouw termijnbedrag nog
+                            past bij je werkelijk verbruik? Bekijk het in de mobiele app van Kikker Energie!</p>
+                        <br>
+                        <p class="mb-0 [manual_payment_none]">
+                            Het bedrag wordt automatisch via onze payment provider CM.com van rekeningnummer
+                            [customer_iban] op naam [customer_bank_account_name]
+                            afgeschreven omstreeks de [contract_started_date]e dag van de maand.</p>
+                        <br class="d-none">
+                        <br>
+                        <p class="mb-0">Met vriendelijke groet,</p>
+                        <p class="mb-0">[reseller_signature]</p>
+                    </div>
+                </div>
+            </div>
+           <div class="row footer my-4 ml-0 mr-0 text-small">
+                <div style="width: 25%;" class="text-left pr-3">
+                    <div class="text-logo">
+                        <img src="[reseller_logo]">
+                    </div>
+                </div>
+
+                <div class="row mx-0 pr-3" style="width: 35%; align-items: center;">
+                    <div class="text-left" style="width: 35px;"><br>KvK</div>
+                    <div class="text-left" style="width: calc(100% - 35px);"><br>71246681</div>
+                </div>
+                <div class="row mx-0 pr-3" style="width: 35%;">
+                    <div class="text-left" style="width: 35px;"><br>BTW</div>
+                    <div class="text-left" style="width: calc(100% - 35px);"><br>NL858635732B01</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

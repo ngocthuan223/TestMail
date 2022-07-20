@@ -33,4 +33,12 @@ export class MailService {
   copyToWhiteRs(mail?: MailTemplate, reseller_id?: number) {
     return this.http.post(this.baseUrl + '/copy-to-white-rs', {mail_name: mail?.mail_name, reseller_id});
   }
+
+  restoreFromDemo(mail: MailTemplate) {
+    return this.http.post(this.baseUrl + '/restore-from-demo', {mail_name: mail.mail_name});
+  }
+
+  getById(id: number) {
+    return this.http.get(this.baseUrl + `/${id}`);
+  }
 }

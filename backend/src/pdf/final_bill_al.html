@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Billing | Kikker</title>
+    <meta charset="utf-8">
+    <link rel="icon" href="asset/kikker-icon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://storage.googleapis.com/kikkerprodbucket/static-files/pdf-css/site.css">
+</head>
+
+<style>
+    body {
+        background-color: #ffff;
+        font-family: DIN;
+        font-size: 16px;
+    }
+
+    .text-bold {
+        font-weight: bold;
+    }
+
+    .text-small {
+        font-size: 13px !important;
+    }
+
+    .text-normal {
+        font-size: 16px !important;
+    }
+
+    .table-header {
+        margin-bottom: 0px !important;
+        border-bottom: 2px solid black !important;
+    }
+
+    .table-striped-even tbody tr:nth-of-type(even) {
+        background-color: rgba(0, 0, 0, .05);
+    }
+
+    .bolder-top {
+        border-top: 5px solid black !important;
+    }
+
+    .bolder-top-light {
+        border-top: 1px solid black !important;
+    }
+
+    .logo {
+        font-size: 20px !important;
+    }
+
+    .logo-image .wrap-logo img {
+        max-height: 100%;
+        height: 100%;
+        border-radius: 0;
+        object-fit: cover;
+        border: none;
+        background: #fff;
+        max-width: 100%;
+    }
+
+    .wrap-logo {
+        height: 3.2cm;
+        border-radius: 0;
+        border: none;
+        background: #fff;
+        max-width: 50%;
+    }
+
+    .logo-image p {
+        font-size: 35px;
+        margin: 0;
+        line-height: 82px;
+        width: 0.99in;
+        height: 0.86in;
+        text-align: center;
+        background-color: rgb(0, 146, 153);
+        color: #fff;
+        margin-right: auto;
+    }
+
+    .name-reseller {
+        position: relative;
+        padding-left: 15px;
+        display: inline-block;
+        display: none;
+    }
+
+    .name-reseller p {
+        margin: 0;
+    }
+
+    .name-reseller p:first-child {
+        font-weight: bold;
+        font-size: 32px !important;
+        color: #000;
+        padding-top: 8px;
+        line-height: 42px;
+    }
+
+    .name-reseller p:last-child {
+        font-size: 26px !important;
+        color: #3AA3AA;
+        line-height: 42px;
+        padding-bottom: 8px
+    }
+
+    .name-reseller:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        height: 100%;
+        width: 2px;
+        background: #BFBFBF;
+        top: 0;
+    }
+
+    #first .container,
+    .second .container,
+    #third .container {
+        position: relative;
+        max-width: 100% !important;
+    }
+
+    #first .container {
+        height: 35.2cm;
+    }
+
+    .second .container {
+        height: 35.2cm;
+    }
+
+    #third .container {
+        height: 34cm;
+    }
+
+    #first .container .row.footer,
+    .second .container .row.footer,
+    #third .container .row.footer {
+        position: absolute;
+        width: 100%;
+        bottom: 1px;
+    }
+
+    .pdl-pdr-0 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    table th {
+        font-weight: 400;
+    }
+
+    .table td,
+    .table th {
+        padding: 0.3rem;
+        border-top: none;
+    }
+
+    .table-custom th {
+        font-size: 12px;
+        position: relative;
+    }
+
+    .green-tr {
+        background: #24441F;
+        color: #fff;
+    }
+
+    .report {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        background: #24441F;
+        color: #fff;
+        padding: 12px;
+        font-size: 11px;
+        bottom: -20px;
+        margin-bottom: 0;
+    }
+
+    .table-grey tr {
+        background-color: rgba(0, 0, 0, .05);
+    }
+
+    .text-logo {
+        color: #24441F;
+        font-size: 40px;
+        font-weight: 900;
+        position: relative;
+        line-height: 100%;
+        font-family: "Montserrat";
+    }
+
+    .text-logo img {
+        height: auto;
+        max-height: 75px;
+        border-radius: 0;
+        object-fit: contain;
+        border: none;
+        background: #fff;
+        width: auto;
+        max-width: 100%;
+    }
+
+    .text-logo span {
+        font-weight: 500;
+        position: absolute;
+        bottom: -8px;
+        left: 85px;
+        line-height: 100%;
+    }
+
+    .table thead th {
+        border-top: 0;
+        position: relative;
+    }
+
+    .fix-table thead th:last-child {
+        min-width: 250px;
+    }
+
+    /* .table td {
+    color: #212529;
+    border-top: 0;
+    min-width: 381px;
+} */
+    .green-tr td {
+        color: #fff;
+    }
+
+    .table thead th {
+        border-bottom: none;
+    }
+
+    .table thead th:first-child,
+    .table tbody tr td:first-child {
+        /* color: #6d6d6d; */
+        min-width: 300px;
+        max-width: 300px;
+        width: 300px;
+    }
+
+    .text-black td {
+        color: #000;
+    }
+
+    /* .total-tr div:first-child {
+        width: 482px;
+    }
+.total-tr div:not(:first-child) {
+    width: calc(50% - 241px);
+    padding-left: 8px;
+    font-weight: bold;
+    display: inline-block;
+} */
+    .total-tr {
+        padding-left: 12.12cm;
+    }
+
+    .total-tr div {
+        font-weight: bold;
+    }
+
+    .total-tr div:first-child {
+        width: 4.18cm;
+    }
+
+    .total-tr div:last-child {
+        width: 3.44cm;
+    }
+
+    .second .table-6-col tr td:first-child {
+        width: 250px;
+    }
+
+    .tr-total {
+        background: #fff !important;
+        border-top: 1px solid #000;
+    }
+
+    .tr-sustainable-tax2 td {
+        padding-bottom: 30px;
+    }
+
+    .table-13 .cut-text {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        max-width: 120px;
+        display: inline-block;
+    }
+
+    .table-4 .cut-text {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        max-width: 50px;
+        display: inline-block;
+    }
+
+    .list-aan {
+        padding-left: 17px;
+    }
+
+    .list-aan li {
+        list-style-type: square;
+        padding-left: 10px;
+    }
+
+    .title-description {
+        font-size: 18px;
+    }
+
+    .content-contract>p {
+        display: flex;
+        width: 100%;
+        text-align: left;
+    }
+
+    .content-contract>p span:last-child {
+        /* float: right; */
+        width: calc(100% - 160px);
+        min-width: calc(100% - 160px);
+        max-width: calc(100% - 160px);
+        text-align: left;
+        display: inline-block;
+    }
+
+    .content-contract>p span:first-child {
+        min-width: 160px;
+        max-width: 160px;
+        width: 160px;
+        display: inline-block;
+    }
+
+    .link-elk {
+        color: #212529;
+        text-decoration: underline
+    }
+
+    .link-elk:hover {
+        color: #212529;
+    }
+
+    a {
+        text-decoration: underline;
+    }
+
+    .space-span {
+        padding-top: 50px;
+    }
+
+    .space-span>p>span:first-child {
+        min-width: 150px;
+    }
+
+    .table td:not(:first-child) {
+        border-left: none;
+    }
+
+    .table tr:nth-last-of-type(3) td {
+        border-top: none;
+        border-left: none;
+    }
+
+    .table tr:last-child td {
+        border-top: 0;
+    }
+
+    .table tr {
+        background-color: #f1f7fa;
+        border-top: 2px solid #fff;
+    }
+
+    .table tr:last-child {
+        border: none;
+        background-color: transparent;
+    }
+
+    .table-custom tbody tr:last-child {
+        background-color: #f1f7fa;
+        border-top: 2px solid #fff;
+    }
+
+
+    .table-custom tbody tr.background-none {
+        background-color: transparent;
+    }
+
+    .table tr:last-child td:nth-last-of-type(1),
+    .table tr:last-child td:nth-last-of-type(2) {
+        border-top: none;
+        border-left: none;
+    }
+
+    .table td {
+        line-height: 32px;
+    }
+
+    .icon-image {
+        width: 12px;
+        margin-right: 3px;
+    }
+
+    .text-image {
+        color: #99a7ce;
+        font-size: 14px;
+    }
+
+    .sub-total>span,
+    .btw-total>span {
+        display: inline-block;
+        width: 140px;
+    }
+
+    .btw-total>span.w-200 {
+        width: 200px;
+    }
+
+    .btw-total>span.nowrap {
+        white-space: nowrap;
+        position: absolute;
+        left: 0;
+        text-align: left;
+    }
+
+    .elk-gas-total>span {
+        display: inline-block;
+        position: relative;
+    }
+
+    .elk-gas-total>span:last-child::after {
+        content: "";
+        width: 100%;
+        background: #000;
+        top: -10px;
+        height: 2px;
+        position: absolute;
+        left: 0;
+    }
+
+    .border-top-bold::after {
+        content: "";
+        width: 100%;
+        background: #000;
+        top: -10px;
+        height: 1px;
+        position: absolute;
+        left: 0;
+    }
+
+    .border-top-bold-td {
+        border-top: 1px solid #000000;
+    }
+
+
+    .row.header {
+        padding-bottom: 50px;
+    }
+
+    .table th {
+        color: #99a7ce;
+    }
+
+    .list-ean-item {
+        min-width: 410px;
+        max-width: 410px;
+    }
+
+    .space-top-gas {
+        border-top: 30px solid #fff !important;
+    }
+
+    .vertical-align-top {
+        vertical-align: top;
+    }
+
+    .footer .text-logo img {
+        max-height: 60px;
+    }
+
+    p.d-none,
+    div.d-none {
+        display: none !important;
+    }
+
+    .custom-table .table thead th:first-child,
+    .custom-table .table tbody tr td:first-child {
+        /* color: #6d6d6d; */
+        min-width: 400px;
+        max-width: 400px;
+        width: 400px;
+    }
+
+    
+    .table.table_tax thead th:nth-child(1),
+    .table.table_tax tbody tr td:nth-child(1) {
+        /* color: #6d6d6d; */
+        min-width: 370px;
+        width: 370px;
+    }
+
+    .table.table_tax thead th:nth-child(2),
+    .table.table_tax tbody tr td:nth-child(2) {
+        /* color: #6d6d6d; */
+        min-width: 160px;
+        width: 160px;
+    }
+
+    .table.table_tax thead th:nth-child(3),
+    .table.table_tax tbody tr td:nth-child(3) {
+        /* color: #6d6d6d; */
+        min-width: 140px;
+        width: 140px;
+    }
+
+    .table_grid_operator .table thead th:nth-child(2),
+    .table_grid_operator .table tbody tr td:nth-child(2) {
+        /* color: #6d6d6d; */
+        min-width: 135px;
+        max-width: 135px;
+        width: 135px;
+    }
+
+    .table_grid_operator .table thead th:nth-child(3),
+    .table_grid_operator .table tbody tr td:nth-child(3) {
+        /* color: #6d6d6d; */
+        min-width: 155px;
+        max-width: 155px;
+        width: 155px;
+    }
+
+    .table_fixed_delivery.table  tbody tr td:nth-child(1),
+    .table_fixed_delivery.table thead th:nth-child(1) {
+        /* color: #6d6d6d; */
+        min-width: 200px;
+        max-width: 200px;
+        width: 200px;
+    }
+
+.table_fixed_delivery.table  thead th.th-elk {
+    padding-right: 65px;
+}
+
+.table_fixed_delivery.table  thead th.th-gas {
+    padding-right: 110px;
+}
+
+    .table_fixed_delivery.table  thead th:nth-child(2),
+.table_fixed_delivery.table tbody tr td:nth-child(2) {
+    min-width: 150px;
+    max-width: 150px;
+    width: 150px;
+}
+
+    .table_fixed_delivery.table  thead th:nth-last-child(3),
+    .table_fixed_delivery.table  tbody tr td:nth-last-child(3) {
+        /* color: #6d6d6d; */
+        min-width: 90px;
+        max-width: 90px;
+        width: 90px;
+    }
+
+    .table_fixed_delivery.table  thead th:nth-last-child(2),
+    .table_fixed_delivery.table  tbody tr td:nth-last-child(2) {
+        /* color: #6d6d6d; */
+        min-width: 110px;
+        max-width: 110px;
+        width: 110px;
+    }
+
+    .table_fixed_delivery.table  thead th:last-child,
+    .table_fixed_delivery.table  tbody tr td:last-child {
+        /* color: #6d6d6d; */
+        min-width: 90px;
+        max-width: 90px;
+        width: 90px;
+    }
+
+    .table-fixed thead th:first-child,
+    .table-fixed tbody tr td:first-child {
+        /* color: #6d6d6d; */
+        min-width: 480px;
+        max-width: 480px;
+        width: 480px;
+    }
+
+    .table-first thead th:first-child,
+    .table-first tbody tr td:first-child {
+        /* color: #6d6d6d; */
+        min-width: 550px;
+        max-width: 550px;
+        width: 550px;
+    }
+
+
+    .table_fixed_delivery.table.table_type_v thead th,
+    .table_fixed_delivery.table.table_type_v tbody tr td {
+        /* color: #6d6d6d; */
+        /* min-width: 110px; */
+    }
+
+    .table_fixed_delivery.table.table_type_v thead th:last-child,
+    .table_fixed_delivery.table.table_type_v tbody tr td:last-child {
+        /* color: #6d6d6d; */
+        min-width: 50px;
+    }
+
+    .table_fixed_delivery.table.table_type_v thead th:nth-child(1),
+    .table_fixed_delivery.table.table_type_v tbody tr td:nth-child(1) {
+        /* color: #6d6d6d; */
+        min-width: 250px;
+        max-width: 250px;
+        width: 250px;
+    }
+
+    .table_fixed_delivery.table.table_type_v thead th:nth-child(1) {
+        padding-right: 55px;
+    }
+
+    .table_fixed_delivery.table.table_type_v thead th:nth-child(2),
+    .table_fixed_delivery.table.table_type_v tbody tr td:nth-child(2) {
+        min-width: 220px;
+        width: 220px;
+    }
+
+    .table-usage thead th:nth-child(1),
+    .table-usage tbody tr td:nth-child(1) {
+        /* color: #6d6d6d; */
+        min-width: 300px;
+        width: 300px;
+    }
+
+    .table-usage thead th:nth-child(2),
+    .table-usage tbody tr td:nth-child(2),
+    .table-usage thead th:nth-child(3),
+    .table-usage tbody tr td:nth-child(3),
+    .table-usage thead th:nth-child(4),
+    .table-usage tbody tr td:nth-child(4) {
+        /* color: #6d6d6d; */
+        min-width: 140px;
+        width: 140px;
+    }
+
+    .table tr td {
+        text-align: left;
+    }
+
+    .content p {
+        text-align: justify;
+    }
+
+    .ean-code>span:first-child {
+        min-width: 100px;
+    }
+
+    .monthly-amount-block>div {
+        padding: 20px 15px;
+    }
+
+    .monthly-amount-block>div:last-child {
+        color: #fff;
+    }
+
+    .w-100 {
+        width: 100%;
+    }
+
+    .t-nowrap {
+        white-space: nowrap;
+    }
+
+    .text-capitalize {
+        text-transform: capitalize;
+    }
+
+    .text-tax-color {
+        color: #99a7ce;
+    }
+    .header-line {
+        line-height: 0.8;
+    }
+table, tr, td, th, tbody, thead, tfoot {
+    page-break-inside: avoid !important;
+}
+
+.avoid-break-page {
+    page-break-inside: avoid !important;
+}
+
+.tr-total-vat {
+    background-color: #ffffff !important;
+
+}
+.d-none {
+    display: none !important;
+}
+
+</style>
+
+<body>
+    <div class="page">
+        <div class="container text-normal">
+            <div class="content">
+                <div class="row">
+                    <div class="col-12">
+                        <p class="mb-5"></span>[customer_full_name]<br>[billing_address_street]
+                            [billing_address_houseNr]<br> [billing_address_zipcode] [billing_address_city]
+                            <span class="float-right">[date_generate_PDF]</span>
+                        </p>
+                        <p class="mb-4">Beste [customer_first_name],</p>
+                        <p class="mb-4 [final_bill_visible]">Dit is je eindafrekening over de verbruiksperiode van
+                            [final_bill_start_date] tot [final_bill_end_date] voor je
+                            leveringsadres [delivery_address_street] [delivery_address_houseNr] te <span
+                                class="text-capitalize">[delivery_address_city]</span>. Je ontvangt deze afrekening
+                            omdat je contract met Kikker
+                            Energie eindigt. In deze eindafrekening berekenen we de kosten tot de einddatum van je
+                            contract. Indien je onlangs
+                            een nieuw Kikker Energie-contract hebt afgesloten, ontvang je hier apart bericht van.
+                        </p>
+
+                        <p class="mb-4 [yearly_bill_visible]">Dit is je jaarafrekening over de verbruiksperiode van
+                            [final_bill_start_date] tot [final_bill_end_date] voor je leveringsadres
+                            [delivery_address_street] [delivery_address_houseNr] te <span class="text-capitalize">[delivery_address_city]</span>. In deze
+                            jaarafrekening vind je een overzicht van je energieverbruik in het afgelopen
+                            jaar en wat je hiervoor hebt betaald.
+                        </p>
+                        <p>
+                        Alle onderdelen met betrekking tot energie, behalve een eventuele opzegboete, zijn belast met btw. Meer informatie
+over je verbruik of de precieze berekening van je <span class="[final_bill_visible]">eindafrekening</span><span class="[yearly_bill_visible]">jaarafrekening</span> vind je op de volgende pagina’s.
+                    </p>
+                    </div>
+                </div>
+
+                <div class="mt-5">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td class="pl-2">
+                                    Totale kosten in de verbruiksperiode
+                                </td>
+                                <td class="pl-2 text-right">[total_real_amount]</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2">
+                                    In rekening gebrachte termijnbedragen
+                                </td>
+                                <td class="pl-2 text-right">[total_generated_amount_negative]</td>
+                            </tr>
+                            <tr>
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td style="height: 15px;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-100"></td>
+                                            <td class="pl-2 text-right font-weight-bold text-nowrap t-nowrap mt-3">
+                                                <div class="border-top-bold position-relative">
+                                                    <span class="pr-5">[is_receive]</span>
+                                                    <span>€ [difference_amount]</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-5">
+                    <p class="mb-1 font-weight-bold">
+                        De termijnbedragen op je <span class="[final_bill_visible]">eindafrekening</span><span
+                            class="[yearly_bill_visible]">jaarafrekening</span>
+                    </p>
+                    <p class="mb-4">
+                        Op deze <span class="[final_bill_visible]">eindafrekening</span><span
+                        class="[yearly_bill_visible]">jaarafrekening</span> verrekenen we alle termijnbedragen die we tot nu toe hebben gefactureerd. Indien je één of meerdere termijnfacturen nog niet hebt betaald, moet je dit alsnog doen.
+                    </p>
+
+                    <p class="mb-1 font-weight-bold [yearly_bill_visible] [new_monthly_amount_visible]">
+                        Je nieuwe termijnbedrag</span>
+                    </p>
+                    <p class="mb-4 [yearly_bill_visible] [new_monthly_amount_visible]">
+                        Op basis van je verbruik in de afgelopen 12 maanden, hebben we een nieuw termijnbedrag voor je
+                        uitgerekend. We passen het termijnbedrag automatisch voor je aan. Ben je het niet eens met je
+                        nieuwe termijnbedrag? Dan kun je dit gemakkelijk aanpassen in onze mobiele app.
+                    </p>
+                </div>
+
+                <div class="row monthly-amount-block [yearly_bill_visible] [new_monthly_amount_visible] mt-4"
+                    style="background-image: url('data:image/png;base64,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');background-size: 100%; background-repeat: no-repeat; background-position: center center;">
+                    <div class="col-6">
+                        <span>
+                            Oude termijnbedrag
+                        </span>
+                        <span class="float-right">
+                            € [current_monthly_amount]
+                        </span>
+                    </div>
+
+                    <div class="col-6 pl-5 font-weight-bold">
+                        <span>
+                            Nieuwe termijnbedrag
+                        </span>
+                        <span class="float-right">
+                            € [new_monthly_amount]
+                        </span>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <p class="font-weight-bold mb-1">Vragen?</p>
+                    <p class="mb-3">Je kunt altijd contact met ons opnemen via [reseller_email] of bellen naar[reseller_phone]</p>
+                    <p class="mb-3">Met vriendelijke groet, </p>
+                    <p class="mb-0">[reseller_name]</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+       <div style="page-break-before: always"></div>
+
+    <div class="page">
+        <div class="container text-normal">
+            <div>
+                <div class="mb-1 font-weight-bold">Samenvatting van je <span
+                        class="[final_bill_visible]">eindafrekening</span><span
+                        class="[yearly_bill_visible]">jaarafrekening</span></div>
+                <div>
+                    [text_summary]
+                </div>
+
+                <div class="mt-5">
+                    <table class="table table-first">
+                        <tbody>
+                            <tr>
+                                <td class="pl-2">
+                                    1. Leveringskosten van [product_type]
+                                </td>
+                                <td class="pl-2 text-right">[total_delivery_amount]</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2">
+                                    2. Overheidsheffingen op [product_type], dit dragen we af aan de overheid
+                                </td>
+                                <td class="pl-2 text-right">[total_tax_amount]</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2">
+                                    3. Netbeheerkosten op [product_type], dit dragen we af aan je netbeheerder
+                                </td>
+                                <td class="pl-2 text-right">[total_grid_operator_amount]</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">
+                                </td>
+                                <td class="pl-2 text-right  font-weight-bold">[total_real_amount]</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mt-5">
+                    <table class="table table-first">
+                        <tbody>
+                            <tr>
+                                <td class="pl-2">
+                                    4. In rekening gebrachte termijnbedragen
+                                </td>
+                                <td class="pl-2 text-right">[total_generated_amount_negative]</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">
+                                </td>
+                                <td class="pl-2 text-right  font-weight-bold">[total_generated_amount_negative]</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td class="w-100"></td>
+                                <td class="pl-2 text-right font-weight-bold text-nowrap t-nowrap">
+                                    <div class="border-top-bold position-relative">
+                                        <span class="pr-5">[is_receive]</span>
+                                        <span>€ [difference_amount]</span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+       <div style="page-break-before: always"></div>
+
+    <div class="page">
+        <div class="container text-normal">
+            <div class="content">
+                <div class="[usage_only_gas_elk_visible]">
+                    <p class="mb-1 font-weight-bold">
+                        Berekening van je verbruik
+                    </p>
+                    <p class="mb-5">
+                        Op basis van je meterstanden bepalen wij hoeveel energie je hebt verbruikt. De meterstanden
+                        lezen wij uit via je
+                        slimme meter, vragen wij bij je op via de Kikker app of berekenen we zelf. Onderstaand vind je
+                        een overzicht van je
+                        verbruik per periode. Omdat tussen periodes soms verschillende tarieven gelden, kan het zijn dat
+                        je verschillende
+                        periodes ziet.
+                    </p>
+                </div>
+
+                <div class="[usage_only_gas_elk_visible]">
+                    [usage_item_by_ean]
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="[usage_only_gas_elk_visible]" style="page-break-before: always"></div>
+
+    <div class="page [usage_both_gas_elk_visible]">
+        <div class="container text-normal">
+            <div class="content">
+                <div>
+                    <p class="mb-1 font-weight-bold">
+                        Berekening van je verbruik
+                    </p>
+                    <p class="mb-5">
+                        Op basis van je meterstanden bepalen wij hoeveel energie je hebt verbruikt. De meterstanden
+                        lezen wij uit via je
+                        slimme meter, vragen wij bij je op via de Kikker app of berekenen we zelf. Onderstaand vind je
+                        een overzicht van je
+                        verbruik per periode. Omdat tussen periodes soms verschillende tarieven gelden, kan het zijn dat
+                        je verschillende
+                        periodes ziet.
+                    </p>
+                </div>
+
+                <div>
+                    [usage_item_by_ean]
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="[usage_both_gas_elk_visible]" style="page-break-before: always"></div>
+
+    <div class="page">
+        <div class="container text-normal">
+            <div class="content">
+                <div class="row">
+                    <div class="col-12">
+                        <p class="mb-4">Op de volgende pagina’s vind je een nadere specificatie van de kosten die
+                            weergegeven zijn op pagina 2.</p>
+                        <p class="mb-1 font-weight-bold">1. Totaal in rekening gebrachte termijnbedragen</p>
+                        <p class="mb-1">Hier zie je een overzicht van de door ons in rekening gebrachte termijnbedragen
+                            in de afgelopen periode (incl. btw).</p>
+                    </div>
+                </div>
+
+                <div class="mt-5">
+                    <table class="table table-custom">
+                        <thead>
+                            <th class="pl-2">MAAND</th>
+                            <th class="pl-2 text-right">BEDRAG</th>
+                        </thead>
+                        <tbody>
+                            [charged_item_by_month]
+                        </tbody>
+                    </table>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td style="height: 15px;"></td>
+                            </tr>
+                            <tr>
+                                <td class="w-100"></td>
+                                <td class="pl-2 text-right font-weight-bold text-nowrap t-nowrap">
+                                    <div class="border-top-bold position-relative">
+                                        <span class="pr-5">Totaal in rekening gebrachte termijnbedragen</span>
+                                        <span>[total_generated_amount]</span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+       <div style="page-break-before: always"></div>
+
+    <div class="page">
+        <div class="container text-normal">
+            <div class="content">
+                <div>
+                    <p class="mb-1 font-weight-bold">2. Leveringskosten voor [product_type]</p>
+                    <p class="mb-5">
+                        Onderstaand vind je een specificatie van je leveringskosten voor [product_type]. Door je
+                        verbruik te vermenigvuldigen
+                        met je tarief bepalen we je kosten per contract.
+                    </p>
+                </div>
+
+                <div class="table_fixed_delivery">
+                    [fixed_delivery_item_dynamic_page]
+                </div>
+            </div>
+        </div>
+    </div>
+
+       <div style="page-break-before: always"></div>
+
+    <div class="page">
+        <div class="container text-normal">
+            <div class="content">
+                <div class="row">
+                    <div class="col-12">
+                        <p class="mb-1 font-weight-bold">3. Overheidsheffingen op [product_type]</p>
+                        <p>Naast de kosten voor het verbruik van [product_type], moet je ook belastingen en toeslagen
+                            betalen aan de overheid.
+                            Ook deze zijn afhankelijk van je verbruik. Onderstaande kosten dragen wij direct af aan de
+                            overheid. Omdat de
+                            heffingen jaarlijks (per 1 januari) veranderen zie je onderstaand mogelijk twee
+                            berekeningen: een voor de periode
+                            vóór en een voor de periode ná 1 januari.
+                        </p>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    [tax_item_dynamic_page]
+                </div>
+            </div>
+        </div>
+    </div>
+
+       <div style="page-break-before: always"></div>
+
+    <div class="page">
+        <div class="container text-normal">
+            <div class="content">
+                <div class="row">
+                    <div class="col-12">
+                        <p class="mb-1 font-weight-bold">4. Netbeheerkosten voor [product_type]</p>
+                        <p class="mb-3">Om van [product_type] gebruik te kunnen maken, dien je aangesloten te zijn op
+                            het openbare [product_type]netwerk
+                            van je netbeheerder. Hiervoor betaal je een vaste vergoeding die afhankelijk is van je
+                            aansluiting. Wij dragen deze
+                            vervolgens weer af aan je netbeheerder. Ook hier geldt dat de tarieven jaarlijks per 1
+                            januari wijzigen. Om deze reden
+                            zie je onderstaand mogelijk weer twee berekeningen: voor de periode vóór en de periode ná 1
+                            januari.
+                        </p>
+                        <p>
+                            Je netbeheerder: <strong>[grid_operator_name]</strong>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mt-3 custom-table table_grid_operator">
+                    [grid_operator_item_dynamic_page]
+                </div>
+            </div>
+        </div>
+    </div>
+
+       <div style="page-break-before: always"></div>
+
+    <div class="page">
+        <div class="container text-normal">
+            <div class="content">
+                <div>
+                    <p class="font-weight-bold">Jouw EAN-codes</p>
+                    [elk_gas_eans]
+                </div>
+
+                <div class="mt-5">
+                    <p class="font-weight-bold">Btw-aangifte</p>
+                    <p class="mb-0">
+                        [reseller_name] handelt onder de leveranciersvergunning van Kikker Energie. In het geval je een btw-aangifte moet doen, dien je daarom de gegevens van Kikker Energie te gebruiken. De benodigde informatie van Kikker Energie en je  netbeheerder vind je onderstaand:
+                    </p>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-5">
+                        <p class="mb-0">
+                            Kikker Energie B.V.</br>
+                            tt. Vasumweg 122</br>
+                            1033SH Amsterdam
+                        </p>
+                        <p class="mb-0">KvK: 71246681</p>
+                        <p class="mb-0">Btw nr.: NL858635732B01</p>
+                    </div>
+                    <div class="col-5">
+                        <p class="mb-0">
+                            [grid_operator_name]</br>
+                            [grid_operator_house_nr]</br>
+                            [grid_operator_postcode]
+                        </p>
+                        <p class="mb-0">KvK: [grid_operator_kvk]</p>
+                        <p class="mb-0">Btw nr.: [grid_operator_btw]</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -6,6 +6,7 @@ import { cloneDeep } from 'lodash';
 import { HtmlReviewComponent } from '../mail-review/mail-review.component';
 import { PdfService } from '../services/PdfService';
 import { PdfTemplate } from './pdf';
+import { SnackBarService } from '../shared/services/snack-bar.service';
 
 @Component({
   selector: 'app-pdf',
@@ -34,7 +35,8 @@ export class PdfComponent implements OnInit {
   constructor(
     private pdfService: PdfService,
     private sanitizer: DomSanitizer,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private snackBarService: SnackBarService
   ) { }
 
 
@@ -55,20 +57,21 @@ export class PdfComponent implements OnInit {
   }
 
   selectPdf(pdf: PdfTemplate) {
-    this.selectedPdf = cloneDeep(pdf);
-    this.htmlPdfData = this.sanitizer.bypassSecurityTrustHtml(this.selectedPdf.template_nl);          
+    this.pdfService.getById(pdf.id).subscribe((pdf: any) => {
+      this.selectedPdf = pdf;
+      this.htmlPdfData = this.sanitizer.bypassSecurityTrustHtml(this.selectedPdf?.template_nl as string);          
+    })
   }
   save() {
     this.pdfService.updatePdf(this.selectedPdf).subscribe((res: any) => {
-      this.selectedPdf = undefined;
       this.reviewPdf = false;
-      this.loadPDFs();
     })
   }
 
   cancel() {
     this.selectedPdf = undefined;
     this.reviewPdf = false;
+    this.loadPDFs();
   }
 
   review() {
@@ -76,18 +79,46 @@ export class PdfComponent implements OnInit {
   }
 
   copyToDemo(pdf: PdfTemplate) {
-
+    this.pdfService.copyToDemo(pdf).subscribe((res: any) => {
+      this.loadPDFs();
+    })
   }
 
   reviewPdfPopup(pdf: PdfTemplate) {
-    const dialogRef = this.dialog.open(HtmlReviewComponent, {
-      data: {
-        template: pdf.template_nl
-      },
-      panelClass: "contract-image-popup"
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    this.pdfService.getById(pdf.id).subscribe((pdf: any) => {
+      const dialogRef = this.dialog.open(HtmlReviewComponent, {
+        data: {
+          template: pdf.template_nl
+        },
+        panelClass: "contract-image-popup"
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log(`Dialog result: ${result}`);
+      });
+    })
+    
+  }
+  copyToWhiteRs(pdf: PdfTemplate) {
+    this.pdfService.copyToWhiteRs(pdf.id).subscribe((res: any) => {
+      if(res) {
+        this.snackBarService.success('copy mail success' + pdf.template_name)
+      } else {
+        this.snackBarService.fail('Not found this mail templte on Demo')
+      }
+    }, () => {
+      this.snackBarService.fail('copy mail fail')
+    })
+  }
+
+  restoreFromDemo(pdf: PdfTemplate) {
+    this.pdfService.restoreFromDemo(pdf.template_name).subscribe((res: any) => {
+      if(res) {
+        this.snackBarService.success('Restore mail success ' + pdf.template_name)
+      } else {
+        this.snackBarService.fail('Not found this mail templte on Demo')
+      }
+    }, () => {
+      this.snackBarService.fail('Restore mail fail')
+    })
   }
 }

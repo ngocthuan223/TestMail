@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express();
 const { mail_template_rs } = require('../entities/models_stagging/index');
+const { MailRsService } = require('../services');
 const { sendMail } = require('../ultils/SendMail');
 
 router.get('/', async (req, res) => {
@@ -16,6 +17,14 @@ router.get('/', async (req, res) => {
     }
     await mail_template_rs.findAll({
         where,
+        attributes: [
+            'id',
+            'mail_name',
+            'lang_key',
+            'subject',
+            'subject_nl',
+            'reseller_id'
+        ],
         order: [
             ['id', 'DESC'],
         ],
@@ -29,6 +38,27 @@ router.get('/', async (req, res) => {
         })
     });
 });
+
+router.get('/:id', async (req, res) => {
+    const id = req.params.id;
+    await mail_template_rs.findOne({
+        where: {
+            id
+        },
+        order: [
+            ['id', 'DESC'],
+        ],
+    }).then((result) => {
+        res.status(200).json(result);
+    }, (error) => {
+        console.log(error)
+        res.status(500).json({
+            message: "Get error",
+            error: error
+        })
+    });
+});
+
 
 router.post('/create', async (req, res) => {
     try {
@@ -71,6 +101,36 @@ router.delete('/delete/:id', async (req, res) => {
         console.log(error)
         res.sendStatus(500);
 
+    }
+});
+
+router.post('/copy-to-demo', async (req, res) => {
+    try {
+        const mail_name = req.fields.mail_name;
+        const reseller_id = req.fields.reseller_id;
+        if(!mail_name) {
+            res.sendStatus(404);
+        }
+        const result = await MailRsService.copyToDemo(mail_name, reseller_id);
+        return res.status(200).json(result);
+    } catch (error) {
+        console.log(error)
+        res.sendStatus(500);
+    }
+});
+
+router.post('/copy-to-other-reseller', async (req, res) => {
+    try {
+        const mail_name = req.fields.mail_name;
+        const reseller_id = req.fields.reseller_id;
+        if(!mail_name) {
+            res.sendStatus(404);
+        }
+        const result = await MailRsService.copyToOtherResellers(mail_name, reseller_id);
+        return res.status(200).json(result);
+    } catch (error) {
+        console.log(error)
+        res.sendStatus(500);
     }
 });
 
